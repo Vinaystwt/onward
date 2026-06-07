@@ -1,0 +1,18 @@
+# Compiler files
+cache/
+out/
+node_modules/
+
+# Ignores broadcast and secret-bearing artifacts
+broadcast/
+deployments.local.json
+*.secret
+*.key
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+.env.*
+!.env.example
