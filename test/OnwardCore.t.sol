@@ -109,6 +109,17 @@ contract OnwardCoreTest is Test {
         assertEq(market.yesShares(1, address(vault)), 0.1 ether);
     }
 
+    function testChallengeSettlesWhenRereadValueChangesButDecisionAgrees() public {
+        uint256 ruleId = _armPredictionRule(OnwardTypes.Comparator.Gt, 10, 0.1 ether);
+        uint256 requestId = _evaluate(ruleId);
+        platform.fulfillUint(requestId, 20);
+
+        uint256 challengeRequest = challenge.challenge{value: challenge.requiredDeposit(OnwardTypes.AgentKind.JsonUint)}(1);
+        platform.fulfillUint(challengeRequest, 30);
+
+        assertEq(uint256(vault.getPendingAction(1).status), uint256(OnwardTypes.ActionStatus.Settled));
+    }
+
     function testChallengeRollbackOnDisagreement() public {
         uint256 ruleId = _armPredictionRule(OnwardTypes.Comparator.Gt, 1_000, 0.1 ether);
         executor.injectWrongNextRead(ruleId);

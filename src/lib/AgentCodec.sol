@@ -72,13 +72,13 @@ library AgentCodec {
         if (spec.kind == OnwardTypes.AgentKind.JsonUint || spec.kind == OnwardTypes.AgentKind.ParseNumber) {
             uint256 value = abi.decode(result, (uint256));
             decision = compareNumber(value, spec.comparator, spec.threshold);
-            decisionHash = keccak256(abi.encode(spec.kind, value, decision));
+            decisionHash = keccak256(abi.encode(spec.kind, decision));
             return (decision, decisionHash);
         }
 
         string memory valueString = abi.decode(result, (string));
         decision = keccak256(bytes(valueString)) == keccak256(bytes(spec.expected));
-        decisionHash = keccak256(abi.encode(spec.kind, valueString, decision));
+        decisionHash = keccak256(abi.encode(spec.kind, decision));
     }
 
     function compareNumber(uint256 value, OnwardTypes.Comparator comparator, uint256 threshold)
