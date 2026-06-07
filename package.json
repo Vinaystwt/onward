@@ -7,7 +7,10 @@
     "build": "forge build",
     "test": "forge test -vv",
     "deploy:all": "node scripts/deploy-all.js",
+    "deploy:v2": "node scripts/deploy-v2.js",
     "demo": "node scripts/demo-harness.js",
+    "demo:v2": "node scripts/gap-demo-v2.js",
+    "verify:v2": "node scripts/verify-v2.js",
     "day0": "node scripts/day0.js"
   },
   "dependencies": {

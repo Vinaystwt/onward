@@ -16,12 +16,10 @@ contract AgentExecutor is IAgentRequesterHandler, OwnableLite {
 
     mapping(uint256 => uint256) public requestToRule;
     mapping(uint256 => bool) public pendingRequests;
-    mapping(uint256 => bool) public forceWrongNextRead;
 
     event AgentRequestCreated(uint256 indexed requestId, uint256 indexed ruleId, uint256 indexed agentId, uint256 deposit);
     event AgentRequestFailed(uint256 indexed requestId, uint256 indexed ruleId, ResponseStatus status);
     event EvaluationCompleted(uint256 indexed requestId, uint256 indexed ruleId, bool decision, bytes32 decisionHash);
-    event WrongNextReadInjected(uint256 indexed ruleId);
 
     modifier onlyRuleEngine() {
         require(msg.sender == address(ruleEngine), "ONLY_RULE_ENGINE");
@@ -36,11 +34,6 @@ contract AgentExecutor is IAgentRequesterHandler, OwnableLite {
     }
 
     receive() external payable {}
-
-    function injectWrongNextRead(uint256 ruleId) external onlyOwner {
-        forceWrongNextRead[ruleId] = true;
-        emit WrongNextReadInjected(ruleId);
-    }
 
     function evaluate(uint256 ruleId) external payable onlyRuleEngine returns (uint256 requestId) {
         OnwardTypes.Rule memory rule = ruleEngine.getRule(ruleId);
@@ -87,11 +80,6 @@ contract AgentExecutor is IAgentRequesterHandler, OwnableLite {
 
         OnwardTypes.Rule memory rule = ruleEngine.getRule(ruleId);
         (bool decision, bytes32 decisionHash) = AgentCodec.decide(rule.eventSpec, responses[0].result);
-        if (forceWrongNextRead[ruleId]) {
-            forceWrongNextRead[ruleId] = false;
-            decision = !decision;
-            decisionHash = keccak256(abi.encode(decisionHash, decision, "INJECTED_WRONG_FIRST_READ"));
-        }
         emit EvaluationCompleted(requestId, ruleId, decision, decisionHash);
         if (!decision) return;
 

@@ -14,6 +14,7 @@ import {Vault} from "../src/Vault.sol";
 import {PredictionMarketAdapter} from "../src/adapters/PredictionMarketAdapter.sol";
 import {TradingAdapter} from "../src/adapters/TradingAdapter.sol";
 import {LendingAdapter} from "../src/adapters/LendingAdapter.sol";
+import {IAlgebraExactInputRouter, NativeAlgebraTradingAdapter} from "../src/adapters/NativeAlgebraTradingAdapter.sol";
 import {ConstantProductAMM} from "../src/venues/ConstantProductAMM.sol";
 import {MiniLendingPool} from "../src/venues/MiniLendingPool.sol";
 import {MinimalPredictionMarket} from "../src/venues/MinimalPredictionMarket.sol";
@@ -121,9 +122,8 @@ contract OnwardCoreTest is Test {
 
     function testChallengeRollbackOnDisagreement() public {
         uint256 ruleId = _armPredictionRule(OnwardTypes.Comparator.Gt, 1_000, 0.1 ether);
-        executor.injectWrongNextRead(ruleId);
         uint256 requestId = _evaluate(ruleId);
-        platform.fulfillUint(requestId, 20);
+        platform.fulfillUint(requestId, 2_000);
 
         assertEq(uint256(vault.getPendingAction(1).status), uint256(OnwardTypes.ActionStatus.Pending));
         uint256 challengeRequest = challenge.challenge{value: challenge.requiredDeposit(OnwardTypes.AgentKind.JsonUint)}(1);
@@ -132,6 +132,52 @@ contract OnwardCoreTest is Test {
         assertEq(uint256(vault.getPendingAction(1).status), uint256(OnwardTypes.ActionStatus.RolledBack));
         assertEq(market.yesShares(1, address(vault)), 0);
         assertEq(vault.reserved(user), 0);
+    }
+
+    function testOwnerCanArmLiveThresholdRule() public {
+        uint256 ruleId = rules.armLiveThresholdRule(
+            "If UTC time is before the live deadline, buy YES",
+            OnwardTypes.DOMAIN_PREDICTION,
+            0.1 ether,
+            abi.encode(uint256(1)),
+            1,
+            OnwardTypes.Comparator.Lt,
+            "https://worldtimeapi.org/api/timezone/Etc/UTC",
+            "unixtime",
+            0,
+            2_000_000_000
+        );
+
+        OnwardTypes.Rule memory rule = rules.getRule(ruleId);
+        assertEq(rule.wallet, address(this));
+        assertEq(rule.eventSpec.url, "https://worldtimeapi.org/api/timezone/Etc/UTC");
+        assertEq(rule.eventSpec.selector, "unixtime");
+        assertEq(rule.eventSpec.threshold, 2_000_000_000);
+        assertEq(uint256(rule.eventSpec.comparator), uint256(OnwardTypes.Comparator.Lt));
+    }
+
+    function testNativeAlgebraTradingAdapterBuildsRouterCalldata() public {
+        address router = address(0xBEEF);
+        address wNative = address(0xA11CE);
+        address tokenOut = address(0xCAFE);
+        address poolDeployer = address(0xD00D);
+        NativeAlgebraTradingAdapter nativeAdapter = new NativeAlgebraTradingAdapter(router, address(vault));
+
+        bytes memory path = abi.encodePacked(wNative, poolDeployer, tokenOut);
+        (address target, uint256 value, bytes memory data) =
+            nativeAdapter.encodeAction(user, 77, 0.25 ether, abi.encode(path, uint256(123), uint256(999)));
+
+        assertEq(target, router);
+        assertEq(value, 0.25 ether);
+
+        IAlgebraExactInputRouter.ExactInputParams memory decoded =
+            abi.decode(_withoutSelector(data), (IAlgebraExactInputRouter.ExactInputParams));
+        assertEq(bytes4(data), nativeAdapter.EXACT_INPUT_SELECTOR());
+        assertEq(decoded.path, path);
+        assertEq(decoded.recipient, address(vault));
+        assertEq(decoded.deadline, 999);
+        assertEq(decoded.amountIn, 0.25 ether);
+        assertEq(decoded.amountOutMinimum, 123);
     }
 
     function testLendingConnectorSuppliesRealPoolState() public {
@@ -213,5 +259,12 @@ contract OnwardCoreTest is Test {
         vm.prank(user);
         requestId = rules.evaluate{value: deposit}(ruleId);
         assertEq(requestId, platform.lastRequestId());
+    }
+
+    function _withoutSelector(bytes memory data) internal pure returns (bytes memory payload) {
+        payload = new bytes(data.length - 4);
+        for (uint256 i = 4; i < data.length; i++) {
+            payload[i - 4] = data[i];
+        }
     }
 }

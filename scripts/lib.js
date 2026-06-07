@@ -42,6 +42,7 @@ export const PURPOSES = {
   PredictionMarketAdapter: "Encodes prediction market buy-YES actions",
   TradingAdapter: "Encodes AMM buy-token actions",
   LendingAdapter: "Encodes lending supply actions",
+  NativeAlgebraTradingAdapter: "Encodes native Algebra exact-input swaps on Somnia Exchange",
   PrimitiveSpike: "Day-0 primitive agent callback and determinism harness"
 };
 
@@ -111,12 +112,19 @@ export async function send(label, txPromise) {
   }
 }
 
-export function readDeployments() {
-  return JSON.parse(fs.readFileSync(path.join(ROOT, "deployments.json"), "utf8"));
+export function readJson(file) {
+  return JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
+}
+
+export function readDeployments(file = "deployments.json") {
+  return readJson(file);
 }
 
 export function writeJson(file, value) {
-  fs.writeFileSync(path.join(ROOT, file), `${JSON.stringify(value, null, 2)}\n`);
+  fs.writeFileSync(
+    path.join(ROOT, file),
+    `${JSON.stringify(value, (_, item) => (typeof item === "bigint" ? item.toString() : item), 2)}\n`
+  );
 }
 
 export async function sleep(ms) {

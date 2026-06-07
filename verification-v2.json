@@ -1,0 +1,1137 @@
+{
+  "generatedAt": "2026-06-07T19:53:23.214Z",
+  "wallet": {
+    "address": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+    "latestBlock": 403182372,
+    "balanceWei": "170535912358000000000",
+    "balanceStt": "170.535912358",
+    "nonce": 247
+  },
+  "deployments": {
+    "generatedAt": "2026-06-07T19:33:26.197Z",
+    "contracts": {
+      "PolicyLimits": {
+        "address": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+        "verdict": "EXISTS",
+        "codeBytes": 3492
+      },
+      "ReceiptLog": {
+        "address": "0x90F8544AbdAA795457AD5a08917DE8b5D86781e2",
+        "verdict": "EXISTS",
+        "codeBytes": 3680
+      },
+      "TrackRecord": {
+        "address": "0xC2fe512fE0A4D0Aa0C7452aC43e76aB9331f9dD2",
+        "verdict": "EXISTS",
+        "codeBytes": 1846
+      },
+      "Vault": {
+        "address": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+        "verdict": "EXISTS",
+        "codeBytes": 6593
+      },
+      "Registry": {
+        "address": "0x0a502b65CC76EcDCf585Ae6109fBFDba71c9E723",
+        "verdict": "EXISTS",
+        "codeBytes": 759
+      },
+      "AdapterRegistry": {
+        "address": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+        "verdict": "EXISTS",
+        "codeBytes": 811
+      },
+      "RuleEngine": {
+        "address": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+        "verdict": "EXISTS",
+        "codeBytes": 5838
+      },
+      "AgentExecutor": {
+        "address": "0x74C1f309D4cEeD7053FfCEdC9839bbF561Da7C7e",
+        "verdict": "EXISTS",
+        "codeBytes": 6021
+      },
+      "Challenge": {
+        "address": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+        "verdict": "EXISTS",
+        "codeBytes": 5920
+      },
+      "MinimalPredictionMarket": {
+        "address": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+        "verdict": "EXISTS",
+        "codeBytes": 2423
+      },
+      "MiniLendingPool": {
+        "address": "0xb449ca0FD26a7973c901D7b4F03bcc76278303B3",
+        "verdict": "EXISTS",
+        "codeBytes": 1459
+      },
+      "PredictionMarketAdapter": {
+        "address": "0xbd3837736e97151Ac5E788Fe1e8184542705b88D",
+        "verdict": "EXISTS",
+        "codeBytes": 529
+      },
+      "NativeAlgebraTradingAdapter": {
+        "address": "0x2F680d8182e26d96be1549B23Ba24956F605e9dB",
+        "verdict": "EXISTS",
+        "codeBytes": 1245
+      },
+      "LendingAdapter": {
+        "address": "0xD61c20a00E6d1bB945F747Eda5C8C3d1C4E7a011",
+        "verdict": "EXISTS",
+        "codeBytes": 508
+      }
+    },
+    "nativeTrading": {
+      "router": {
+        "address": "0xE94de02e52Eaf9F0f6Bf7f16E4927FcBc2c09bC7",
+        "verdict": "EXISTS",
+        "codeBytes": 12561
+      },
+      "factory": {
+        "address": "0x0BFaCE9a5c9F884a4f09fadB83b69e81EA41424B",
+        "verdict": "EXISTS",
+        "codeBytes": 10699
+      },
+      "poolDeployer": {
+        "address": "0x15fCbF9bC0797567053A8265b7E6f4eC43EA7327",
+        "verdict": "EXISTS",
+        "codeBytes": 24079
+      },
+      "wNative": {
+        "address": "0x4A3BC48C156384f9564Fd65A53a2f3D534D8f2b7",
+        "verdict": "EXISTS",
+        "codeBytes": 3124
+      },
+      "tokenOut": {
+        "address": "0xDa4FDE38bE7a2b959BF46E032ECfA21e64019b76",
+        "verdict": "EXISTS",
+        "codeBytes": 3887
+      },
+      "pool": {
+        "address": "0xebF1d0F21fE80A52B264FB3a9e7a9384d583a134",
+        "verdict": "EXISTS",
+        "codeBytes": 22435
+      }
+    }
+  },
+  "transactions": {
+    "deploy:PolicyLimits": {
+      "hash": "0xbc2c1ded33a91918b669fbdeefebedfdacebdcf609bc19bdab19e5ea3994aefc",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171416,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:ReceiptLog": {
+      "hash": "0x5c4f183c20da5f923dc20b15037dd853d70224eb6b99264be48698dc9cae6beb",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171453,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x90F8544AbdAA795457AD5a08917DE8b5D86781e2",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:TrackRecord": {
+      "hash": "0x7b31a2edcb69f16b21716809e825ec3c193afd05402b6631752db7f4c6f19a6d",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171496,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xC2fe512fE0A4D0Aa0C7452aC43e76aB9331f9dD2",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:Vault": {
+      "hash": "0x760d9d482b11478cf6d3b506242d0d99634a022e2522c3eb4c0bf1c1512ee379",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171538,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:Registry": {
+      "hash": "0xbc0f3c14dfd0b55297b0f46d4eeec69c24c80e3109a99cb63c74f507c1228176",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171576,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x0a502b65CC76EcDCf585Ae6109fBFDba71c9E723",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:AdapterRegistry": {
+      "hash": "0xa84dcaf9a5cabc36ea5c5b67ac45e97e29be9c00d84fe468d289d2104323039a",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171614,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:RuleEngine": {
+      "hash": "0x1831c019412122005cf35f6b5901eee06b7c38a9685c0379cd37b11b53c782cc",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171667,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:AgentExecutor": {
+      "hash": "0x561a4a7bf254e4f307dd40a065c5b3a056e9ca4397ddd30d2bf48eca8ca6afa1",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171708,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x74C1f309D4cEeD7053FfCEdC9839bbF561Da7C7e",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:Challenge": {
+      "hash": "0xb6ec011d72ae71945b5d6e6d806c0b047ce0490f40fe7f6a927d05d2e5c31acd",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171750,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:MinimalPredictionMarket": {
+      "hash": "0xed780214fb37d22708d06e4a67075ce52a6594ee864d9b76df66e2bee1f2f0a3",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171787,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:MiniLendingPool": {
+      "hash": "0xaa3447f33c19805ab674cb8c4e5dfd68bb9fe18031d3b95be375bf5f6093e6f6",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171824,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xb449ca0FD26a7973c901D7b4F03bcc76278303B3",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:PredictionMarketAdapter": {
+      "hash": "0x17f680a9d4a7ea6414b182c708a375522e5509c17d2bf4ee3b725ab1657f5917",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171862,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xbd3837736e97151Ac5E788Fe1e8184542705b88D",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:NativeAlgebraTradingAdapter": {
+      "hash": "0xe1ace0c1344e9f11dc28e98b1f7c40bb1c91788f1edf082b5e93d834bf43c1c6",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171899,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0x2F680d8182e26d96be1549B23Ba24956F605e9dB",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "deploy:LendingAdapter": {
+      "hash": "0xdbe41f864793432bf832148866aa0483c26c6ff2bbd4e359fa5fc48b3f2b399a",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171935,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x0000000000000000000000000000000000000000",
+      "contractAddress": "0xD61c20a00E6d1bB945F747Eda5C8C3d1C4E7a011",
+      "transactionTo": null,
+      "valueWei": "0"
+    },
+    "setup:PolicyLimits.setVault": {
+      "hash": "0xc9b27ae65e1cd8e8ab8caa4263fc03b1ad5a2bfebecb9c5f9f29820df2b0b05e",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403171980,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "contractAddress": null,
+      "transactionTo": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "valueWei": "0"
+    },
+    "setup:PolicyLimits.setRuleEngine": {
+      "hash": "0xc605c84d966d76ab4d2e2ec77996d2f76360cc9e9519d62c75e1cec7b2fc848d",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172029,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "contractAddress": null,
+      "transactionTo": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "valueWei": "0"
+    },
+    "setup:PolicyLimits.setTrackRecord": {
+      "hash": "0x8d664471f256cd6745e2f33da56928fae43733ff9ff7589f02dfe7b1548c8000",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172062,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "contractAddress": null,
+      "transactionTo": "0xF5C345E427cB6c5f2A6266ea2348562aCaF8144A",
+      "valueWei": "0"
+    },
+    "setup:ReceiptLog.setWriter(Vault)": {
+      "hash": "0x6c3575491a355e041d934ed39aa347cc744878e95cae5a0b71f16a21782520da",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172105,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x90F8544AbdAA795457AD5a08917DE8b5D86781e2",
+      "contractAddress": null,
+      "transactionTo": "0x90F8544AbdAA795457AD5a08917DE8b5D86781e2",
+      "valueWei": "0"
+    },
+    "setup:TrackRecord.setWriter(Vault)": {
+      "hash": "0x7a1b94a6904bd3e8769ff00eccca9bbcb2ffc0aab42cf96d202db1fcf9b47c1f",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172137,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xC2fe512fE0A4D0Aa0C7452aC43e76aB9331f9dD2",
+      "contractAddress": null,
+      "transactionTo": "0xC2fe512fE0A4D0Aa0C7452aC43e76aB9331f9dD2",
+      "valueWei": "0"
+    },
+    "setup:Vault.setExecutor": {
+      "hash": "0xb87055d6bafab854c7ac58c71dcc4288ba4827e1dea2f8bda8a57be361e339f3",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172173,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "contractAddress": null,
+      "transactionTo": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "valueWei": "0"
+    },
+    "setup:Vault.setChallenge": {
+      "hash": "0x364d071ceca574de09a28ef3fa5c231018fc14fa51e490e15b928d5d10575de7",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172207,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "contractAddress": null,
+      "transactionTo": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "valueWei": "0"
+    },
+    "setup:RuleEngine.setExecutor": {
+      "hash": "0xe8bf9d82b7b56efc2517a8b9e9567768465f36fb8eb3685930550618dc5e6dba",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172242,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "setup:AdapterRegistry.setAdapter(PREDICTION)": {
+      "hash": "0x06291602378d40e572ea1521d30733d2537304d970987e3fc19d0cdfe5a229b3",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172277,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "contractAddress": null,
+      "transactionTo": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "valueWei": "0"
+    },
+    "setup:AdapterRegistry.setAdapter(TRADING_NATIVE)": {
+      "hash": "0x00f799262d7b4c008c7db3c2be3a5658a7d5fa57e55cee957ab8dacbec45c92b",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172317,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "contractAddress": null,
+      "transactionTo": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "valueWei": "0"
+    },
+    "setup:AdapterRegistry.setAdapter(LENDING)": {
+      "hash": "0x3dc0e910263ae2752bb808b49fdcc21fa65cf0165ba15706a90b99e724764e11",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172350,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "contractAddress": null,
+      "transactionTo": "0x94166106d26808b33c74d9f7Ae186750f0Dd01Da",
+      "valueWei": "0"
+    },
+    "setup:MinimalPredictionMarket.createMarket": {
+      "hash": "0x8415adaef4e096225ba2dd34450e9c9d25c31cdeee82e324b856aed8024db89f",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172388,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+      "contractAddress": null,
+      "transactionTo": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+      "valueWei": "0"
+    },
+    "setup:MiniLendingPool.supply(seed)": {
+      "hash": "0x8785cdfac8096fe50972aeba36c9ba64569c02fc9e04f22ae5e566d1bf9c26b7",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403172425,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0xb449ca0FD26a7973c901D7b4F03bcc76278303B3",
+      "contractAddress": null,
+      "transactionTo": "0xb449ca0FD26a7973c901D7b4F03bcc76278303B3",
+      "valueWei": "1000000000000000000"
+    },
+    "demo:deposit": {
+      "hash": "0x2a9cd4fcb793a2dce52f3b11f80447409cece3df67333fe4ee7a979cff674e49",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403178191,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "contractAddress": null,
+      "transactionTo": "0x8054d6819fa4B43195353579e9519Dd7bc16223A",
+      "valueWei": "4000000000000000000"
+    },
+    "rollback:arm": {
+      "hash": "0x391eacb8170ef6b552e2be421f59cec97226c13248e8a91fa63331d842f399e5",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403178869,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "rollback:evaluate": {
+      "hash": "0xa3ac6d3e482b15294755ad8329e12703ec09e3c52b3428ded6d22b8220e96b2d",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403178911,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "120000000000000000"
+    },
+    "rollback:evaluationCallback": {
+      "hash": "0x779ea01687e1862105ea934507c2f42f523161d1c12350f6481911e9ea094586",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403178931,
+      "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "rollback:challenge": {
+      "hash": "0x0e230fa5f6cf5d7f64c7c1fa2378f59ae1bfa3f556763e574e8621c81b038df4",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179124,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "contractAddress": null,
+      "transactionTo": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "valueWei": "120000000000000000"
+    },
+    "rollback:challengeCallback": {
+      "hash": "0x7c20191964335512e217a208e052bba61fa9027175095d4e387515cc61d2b07b",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179141,
+      "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "agree:arm": {
+      "hash": "0xb754be2e67628467d3d5cbebc34910115422312e220056acba9ead8a2c9da79f",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179275,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "agree:evaluate": {
+      "hash": "0x370c2d21aa849a12e6ba8a8d7927fe4bace26a4ca71e85ffae82e2f81f74e4cf",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179315,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "120000000000000000"
+    },
+    "agree:evaluationCallback": {
+      "hash": "0x9f576df7d111a08ba5545098d359f5e97fe2dbab1fb0252b48a2e2ad8a1047b7",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179333,
+      "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "agree:challenge": {
+      "hash": "0x7d6dffdbf65f9f6afef03d84b383d51b97028b4ce94d11720e07e457229f80a3",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179477,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "contractAddress": null,
+      "transactionTo": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "valueWei": "120000000000000000"
+    },
+    "agree:challengeCallback": {
+      "hash": "0xf3793d8d41e3078c46b5ca9ae4ff57dd1b7d0b06001f74bdd796e0e95f5dd6b0",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179497,
+      "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "nativeTrading:arm": {
+      "hash": "0x9749df72d4780728d43146c999e08d61ccc2bfd7253c746ae7f6321faa09fcd4",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179630,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "nativeTrading:evaluate": {
+      "hash": "0x2c3a3c9799c20cc60e1dd532d5cf34cbbb71a4abb98802462082d8330e708825",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179668,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "120000000000000000"
+    },
+    "nativeTrading:evaluationCallback": {
+      "hash": "0xddacceb29169ed893f69c4e7163d255940a00f0599737c7da4b5bc0bf6a47fdd",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179690,
+      "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "nativeTrading:challenge": {
+      "hash": "0xb8c3120abedc46057661f05da6452d5027bd777ff84b6217ddf6af48532ccd10",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179830,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "contractAddress": null,
+      "transactionTo": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "valueWei": "120000000000000000"
+    },
+    "nativeTrading:challengeCallback": {
+      "hash": "0x99525f2c128eae81ffda4d675c3c91f26482186a7c61e6ab0990eb37071b3037",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179850,
+      "from": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "onDemandTrigger:arm": {
+      "hash": "0x113f13a5327f4617c82a3ea4d89502b94b9ca3adaedcefd34bd0229850d1a56d",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403179989,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "onDemandTrigger:evaluate": {
+      "hash": "0xd7a08a6e7db3a560b78a99863da4ec24a07ab83c5f9fa5e4b167620f78136d1c",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180071,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "120000000000000000"
+    },
+    "onDemandTrigger:evaluationCallback": {
+      "hash": "0x695f022fa747b226402ab3f24e355bced5f1cc03d3ee06636c6efdfed1631e93",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180091,
+      "from": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "onDemandTrigger:challenge": {
+      "hash": "0x0651f5a60232a7795926d3396d0d33af08b0cdda31610ade8629897d87626368",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180240,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "contractAddress": null,
+      "transactionTo": "0x580bDfbCB4536E7F4899456d2b01D493eA0B1ed6",
+      "valueWei": "120000000000000000"
+    },
+    "onDemandTrigger:challengeCallback": {
+      "hash": "0xc39b3f32de12d6ae89797f19b029d73b863c715925b02438c027fde4c3a37ae4",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180259,
+      "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    },
+    "nonSuccessGuard:arm": {
+      "hash": "0x5e7b2c44c44cd14bb0c7a23aacd05caba596f2b9a41281f751bb6bf14726c11a",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180398,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "0"
+    },
+    "nonSuccessGuard:evaluate": {
+      "hash": "0x450a61475adbe629e467c34affe11cf7ef09402d87bc2eb8ce01aedee80d78e9",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180448,
+      "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "fromMatchesWallet": true,
+      "to": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "contractAddress": null,
+      "transactionTo": "0x2D608E106e6Ef0Ab7e99A62c99F2a6d823c64aD5",
+      "valueWei": "120000000000000000"
+    },
+    "nonSuccessGuard:evaluationCallback": {
+      "hash": "0x8f5cc53fc82e33db7beb635d7eecb371e3a8a77a47755477c11692a39715dc7a",
+      "exists": true,
+      "status": "success",
+      "blockNumber": 403180501,
+      "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "fromMatchesWallet": false,
+      "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "contractAddress": null,
+      "transactionTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "valueWei": "0"
+    }
+  },
+  "explorerDiscovery": {
+    "router": {
+      "url": "https://shannon-explorer.somnia.network/api/v2/smart-contracts/0xE94de02e52Eaf9F0f6Bf7f16E4927FcBc2c09bC7",
+      "ok": true,
+      "name": "SwapRouter",
+      "isVerified": true,
+      "abiEntries": 21,
+      "compilerVersion": "v0.8.20+commit.a1b79de6",
+      "filePath": "contracts/SwapRouter.sol",
+      "error": null
+    },
+    "factory": {
+      "url": "https://shannon-explorer.somnia.network/api/v2/smart-contracts/0x0BFaCE9a5c9F884a4f09fadB83b69e81EA41424B",
+      "ok": true,
+      "name": "AlgebraFactory",
+      "isVerified": true,
+      "abiEntries": 55,
+      "compilerVersion": "v0.8.20+commit.a1b79de6",
+      "filePath": "contracts/AlgebraFactory.sol",
+      "error": null
+    },
+    "poolDeployer": {
+      "url": "https://shannon-explorer.somnia.network/api/v2/smart-contracts/0x15fCbF9bC0797567053A8265b7E6f4eC43EA7327",
+      "ok": true,
+      "name": "AlgebraPoolDeployer",
+      "isVerified": true,
+      "abiEntries": 3,
+      "compilerVersion": "v0.8.20+commit.a1b79de6",
+      "filePath": "contracts/AlgebraPoolDeployer.sol",
+      "error": null
+    },
+    "pool": {
+      "url": "https://shannon-explorer.somnia.network/api/v2/smart-contracts/0xebF1d0F21fE80A52B264FB3a9e7a9384d583a134",
+      "ok": true,
+      "name": "AlgebraPool",
+      "isVerified": true,
+      "abiEntries": 86,
+      "compilerVersion": "v0.8.20+commit.a1b79de6",
+      "filePath": "contracts/AlgebraPool.sol",
+      "error": null
+    },
+    "tokenOutSymbol": "USDT.g",
+    "wNativeSymbol": "WSTT"
+  },
+  "actions": {
+    "rollback": {
+      "actionId": "5",
+      "ruleId": "5",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "target": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+      "valueWei": "20000000000000000",
+      "status": "RolledBack",
+      "originalDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "rawOutputUint": "8",
+      "receiptStatus": "RolledBack",
+      "receiptRawOutputUint": "8",
+      "receiptDecision": true
+    },
+    "agree": {
+      "actionId": "6",
+      "ruleId": "6",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "target": "0xb0182863da72a21F37414A1E6448379F3eb4AC18",
+      "valueWei": "20000000000000000",
+      "status": "Settled",
+      "originalDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000031",
+      "rawOutputUint": "49",
+      "receiptStatus": "Settled",
+      "receiptRawOutputUint": "49",
+      "receiptDecision": true
+    },
+    "nativeTrading": {
+      "actionId": "7",
+      "ruleId": "7",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "target": "0xE94de02e52Eaf9F0f6Bf7f16E4927FcBc2c09bC7",
+      "valueWei": "10000000000000000",
+      "status": "Settled",
+      "originalDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000018",
+      "rawOutputUint": "24",
+      "receiptStatus": "Settled",
+      "receiptRawOutputUint": "24",
+      "receiptDecision": true
+    },
+    "onDemandTrigger": {
+      "actionId": "8",
+      "ruleId": "8",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "target": "0xb449ca0FD26a7973c901D7b4F03bcc76278303B3",
+      "valueWei": "10000000000000000",
+      "status": "Settled",
+      "originalDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "rawOutputUint": "5",
+      "receiptStatus": "Settled",
+      "receiptRawOutputUint": "5",
+      "receiptDecision": true
+    }
+  },
+  "agentRequests": {
+    "rollbackFirst": {
+      "source": "callbackTxInput",
+      "txHash": "0x779ea01687e1862105ea934507c2f42f523161d1c12350f6481911e9ea094586",
+      "txFrom": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421327",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "uintResult": "8",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "rollbackReread": {
+      "source": "callbackTxInput",
+      "txHash": "0x7c20191964335512e217a208e052bba61fa9027175095d4e387515cc61d2b07b",
+      "txFrom": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421391",
+      "rawResult": "0x000000000000000000000000000000000000000000000000000000000000001e",
+      "uintResult": "30",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "agreeFirst": {
+      "source": "callbackTxInput",
+      "txHash": "0x9f576df7d111a08ba5545098d359f5e97fe2dbab1fb0252b48a2e2ad8a1047b7",
+      "txFrom": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421452",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000031",
+      "uintResult": "49",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "agreeReread": {
+      "source": "callbackTxInput",
+      "txHash": "0xf3793d8d41e3078c46b5ca9ae4ff57dd1b7d0b06001f74bdd796e0e95f5dd6b0",
+      "txFrom": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421501",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "uintResult": "5",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "nativeTradingFirst": {
+      "source": "callbackTxInput",
+      "txHash": "0xddacceb29169ed893f69c4e7163d255940a00f0599737c7da4b5bc0bf6a47fdd",
+      "txFrom": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421560",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000019",
+      "uintResult": "25",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "nativeTradingReread": {
+      "source": "callbackTxInput",
+      "txHash": "0x99525f2c128eae81ffda4d675c3c91f26482186a7c61e6ab0990eb37071b3037",
+      "txFrom": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421609",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000029",
+      "uintResult": "41",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "onDemandFirst": {
+      "source": "callbackTxInput",
+      "txHash": "0x695f022fa747b226402ab3f24e355bced5f1cc03d3ee06636c6efdfed1631e93",
+      "txFrom": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421685",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "uintResult": "5",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "onDemandReread": {
+      "source": "callbackTxInput",
+      "txHash": "0xc39b3f32de12d6ae89797f19b029d73b863c715925b02438c027fde4c3a37ae4",
+      "txFrom": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421737",
+      "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000016",
+      "uintResult": "22",
+      "callbackStatusRaw": "0",
+      "receiptId": "1",
+      "executionCostWei": "30000000000000000",
+      "status": "Success",
+      "responseStatus": "Success",
+      "getRequestError": "execution reverted (unknown custom error)"
+    },
+    "nonSuccess": {
+      "source": "callbackTxInput",
+      "txHash": "0x8f5cc53fc82e33db7beb635d7eecb371e3a8a77a47755477c11692a39715dc7a",
+      "txFrom": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+      "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+      "selector": "0x5dae1f1c",
+      "requestId": "5421801",
+      "rawResult": "0x7b227374657073223a5b7b226e616d65223a22726571756573745f7265636569766564222c22726571756573744964223a2235343231383031227d2c7b2261726773436f756e74223a332c2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a22726571756573745f6465636f646564227d2c7b2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a2268616e646c65725f73746172746564227d2c7b226572726f72223a2266657463682068747470733a2f2f6874747062696e2e6f72672f7374617475732f3530303a2066657463682068747470733a2f2f6874747062696e2e6f72672f7374617475732f3530303a20616c6c203420617474656d707473206661696c65642c206c617374206572726f723a2048545450203530303a20222c226e616d65223a226572726f72227d5d7d0a",
+      "uintResult": "55695350014810725740291211409812075872226224317059242478638570177750433490281",
+      "callbackStatusRaw": "0",
+      "receiptId": "0",
+      "executionCostWei": "30000000000000000",
+      "status": "Failed",
+      "responseStatus": "Failed",
+      "getRequestError": "execution reverted (unknown custom error)"
+    }
+  },
+  "demoStateSnapshots": {
+    "initial": {
+      "blockNumber": 403178291,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "rollbackBeforeChallenge": {
+      "blockNumber": 403179056,
+      "vaultReservedWei": "20000000000000000",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "rollbackAfterChallenge": {
+      "blockNumber": 403179214,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "agreeBeforeSettlement": {
+      "blockNumber": 403179410,
+      "vaultReservedWei": "20000000000000000",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "agreeAfterSettlement": {
+      "blockNumber": 403179566,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11940000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "nativeTradingBeforeSettlement": {
+      "blockNumber": 403179766,
+      "vaultReservedWei": "10000000000000000",
+      "vaultBalanceWei": "11940000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "nativeTradingAfterSettlement": {
+      "blockNumber": 403179924,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "onDemandBefore": {
+      "blockNumber": 403179996,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "onDemandAfterPending": {
+      "blockNumber": 403180172,
+      "vaultReservedWei": "10000000000000000",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "onDemandAfterSettlement": {
+      "blockNumber": 403180329,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11920000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "10000000000000000",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "final": {
+      "blockNumber": 403180543,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11920000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "10000000000000000",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "current": {
+      "blockNumber": 403183100,
+      "vaultUserBalanceWei": "11920000000000000000",
+      "vaultUserReservedWei": "0",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "10000000000000000",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    }
+  },
+  "assertions": {
+    "allContractsExist": true,
+    "nativeTradingVenueExists": true,
+    "allRecordedTxsExist": true,
+    "allRecordedTxsFromWalletWhenUserTx": true,
+    "rollbackIsRealDisagreement": true,
+    "rollbackReservedReturnedToZero": true,
+    "agreeSettled": true,
+    "nativeTradingStateChanged": true,
+    "forceEvaluateUsedAgentCallback": true,
+    "nonSuccessCreatedNoAction": true
+  }
+}

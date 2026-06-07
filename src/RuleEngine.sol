@@ -39,19 +39,57 @@ contract RuleEngine is OwnableLite {
         OnwardTypes.ActionSpec calldata actionSpec,
         uint256 limitsRef
     ) external returns (uint256 ruleId) {
+        ruleId = _armRule(msg.sender, plainText, eventSpec, actionSpec, limitsRef);
+    }
+
+    function armLiveThresholdRule(
+        string calldata plainText,
+        bytes32 domain,
+        uint256 actionValue,
+        bytes calldata actionParams,
+        uint256 limitsRef,
+        OnwardTypes.Comparator comparator,
+        string calldata url,
+        string calldata selector,
+        uint8 decimals,
+        uint256 threshold
+    ) external onlyOwner returns (uint256 ruleId) {
+        OnwardTypes.EventSpec memory eventSpec = OnwardTypes.EventSpec({
+            kind: OnwardTypes.AgentKind.JsonUint,
+            comparator: comparator,
+            url: url,
+            selector: selector,
+            decimals: decimals,
+            threshold: threshold,
+            expected: "",
+            prompt: "",
+            systemOrDescription: ""
+        });
+        OnwardTypes.ActionSpec memory actionSpec =
+            OnwardTypes.ActionSpec({domain: domain, actionType: 0, value: actionValue, params: actionParams});
+        ruleId = _armRule(msg.sender, plainText, eventSpec, actionSpec, limitsRef);
+    }
+
+    function _armRule(
+        address wallet,
+        string memory plainText,
+        OnwardTypes.EventSpec memory eventSpec,
+        OnwardTypes.ActionSpec memory actionSpec,
+        uint256 limitsRef
+    ) internal returns (uint256 ruleId) {
         require(actionSpec.value > 0, "ZERO_ACTION_VALUE");
         ruleId = nextRuleId++;
         OnwardTypes.Rule storage rule = rules[ruleId];
         rule.id = ruleId;
-        rule.wallet = msg.sender;
+        rule.wallet = wallet;
         rule.plainText = plainText;
         rule.eventSpec = eventSpec;
         rule.actionSpec = actionSpec;
         rule.limitsRef = limitsRef;
         rule.active = true;
-        rulesByWallet[msg.sender].push(ruleId);
-        policyLimits.applyLimitRefFromEngine(msg.sender, ruleId, limitsRef);
-        emit RuleArmed(ruleId, msg.sender, plainText);
+        rulesByWallet[wallet].push(ruleId);
+        policyLimits.applyLimitRefFromEngine(wallet, ruleId, limitsRef);
+        emit RuleArmed(ruleId, wallet, plainText);
     }
 
     function setRuleActive(uint256 ruleId, bool active) external {

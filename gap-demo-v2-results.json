@@ -1,0 +1,629 @@
+{
+  "generatedAt": "2026-06-07T19:48:51.878Z",
+  "user": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+  "startingBalanceStt": "175.780612844",
+  "endingBalanceStt": "170.535912358",
+  "sttSpentByWallet": "5.244700486",
+  "depositTxHash": "0x2a9cd4fcb793a2dce52f3b11f80447409cece3df67333fe4ee7a979cff674e49",
+  "depositBlockNumber": 403178191,
+  "cleanup": {
+    "before": {
+      "blockNumber": 403178196,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "cleaned": [],
+    "after": {
+      "blockNumber": 403178256,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    }
+  },
+  "initialState": {
+    "blockNumber": 403178291,
+    "vaultReservedWei": "0",
+    "vaultBalanceWei": "11960000000000000000",
+    "predictionYesSharesForVaultWei": "40000000000000000",
+    "lendingSuppliedByVaultWei": "0",
+    "nativeTrading": {
+      "vaultTokenOutBalance": "0",
+      "poolWNativeBalance": "10719108091226292",
+      "poolTokenOutBalance": "78409449651660564891"
+    }
+  },
+  "rollback": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "localSecondAtArm": 0,
+        "threshold": "15",
+        "arm": {
+          "txHash": "0x391eacb8170ef6b552e2be421f59cec97226c13248e8a91fa63331d842f399e5",
+          "blockNumber": 403178869,
+          "ruleId": "5"
+        },
+        "evaluation": {
+          "txHash": "0xa3ac6d3e482b15294755ad8329e12703ec09e3c52b3428ded6d22b8220e96b2d",
+          "blockNumber": 403178911,
+          "method": "evaluate",
+          "requestId": "5421327",
+          "depositWei": "120000000000000000",
+          "callback": {
+            "txHash": "0x779ea01687e1862105ea934507c2f42f523161d1c12350f6481911e9ea094586",
+            "blockNumber": 403178931,
+            "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+            "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+            "eventName": "EvaluationCompleted",
+            "decision": true,
+            "decisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+            "status": "Success",
+            "request": {
+              "source": "callbackTxInput",
+              "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+              "selector": "0x5dae1f1c",
+              "requestId": "5421327",
+              "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000008",
+              "uintResult": "8",
+              "callbackStatusRaw": "0",
+              "receiptId": "1",
+              "executionCostWei": "30000000000000000",
+              "status": "Success",
+              "responseStatus": "Success",
+              "responseValidator": null,
+              "getRequestError": "execution reverted (unknown custom error)"
+            }
+          },
+          "actionId": "5"
+        },
+        "firstReadValue": "8",
+        "firstDecision": true,
+        "beforeChallenge": {
+          "blockNumber": 403179056,
+          "vaultReservedWei": "20000000000000000",
+          "vaultBalanceWei": "11960000000000000000",
+          "predictionYesSharesForVaultWei": "40000000000000000",
+          "lendingSuppliedByVaultWei": "0",
+          "nativeTrading": {
+            "vaultTokenOutBalance": "0",
+            "poolWNativeBalance": "10719108091226292",
+            "poolTokenOutBalance": "78409449651660564891"
+          }
+        },
+        "challenge": {
+          "txHash": "0x0e230fa5f6cf5d7f64c7c1fa2378f59ae1bfa3f556763e574e8621c81b038df4",
+          "blockNumber": 403179124,
+          "requestId": "5421391",
+          "depositWei": "120000000000000000",
+          "callback": {
+            "txHash": "0x7c20191964335512e217a208e052bba61fa9027175095d4e387515cc61d2b07b",
+            "blockNumber": 403179141,
+            "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+            "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+            "eventName": "ChallengeResolved",
+            "agreed": false,
+            "rereadDecisionHash": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+            "status": "Success",
+            "request": {
+              "source": "callbackTxInput",
+              "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+              "selector": "0x5dae1f1c",
+              "requestId": "5421391",
+              "rawResult": "0x000000000000000000000000000000000000000000000000000000000000001e",
+              "uintResult": "30",
+              "callbackStatusRaw": "0",
+              "receiptId": "1",
+              "executionCostWei": "30000000000000000",
+              "status": "Success",
+              "responseStatus": "Success",
+              "responseValidator": null,
+              "getRequestError": "execution reverted (unknown custom error)"
+            }
+          },
+          "finalStatus": "RolledBack"
+        },
+        "rereadValue": "30",
+        "rereadDecision": false,
+        "afterChallenge": {
+          "blockNumber": 403179214,
+          "vaultReservedWei": "0",
+          "vaultBalanceWei": "11960000000000000000",
+          "predictionYesSharesForVaultWei": "40000000000000000",
+          "lendingSuppliedByVaultWei": "0",
+          "nativeTrading": {
+            "vaultTokenOutBalance": "0",
+            "poolWNativeBalance": "10719108091226292",
+            "poolTokenOutBalance": "78409449651660564891"
+          }
+        },
+        "outcome": "RolledBack"
+      }
+    ],
+    "success": {
+      "attempt": 1,
+      "localSecondAtArm": 0,
+      "threshold": "15",
+      "arm": {
+        "txHash": "0x391eacb8170ef6b552e2be421f59cec97226c13248e8a91fa63331d842f399e5",
+        "blockNumber": 403178869,
+        "ruleId": "5"
+      },
+      "evaluation": {
+        "txHash": "0xa3ac6d3e482b15294755ad8329e12703ec09e3c52b3428ded6d22b8220e96b2d",
+        "blockNumber": 403178911,
+        "method": "evaluate",
+        "requestId": "5421327",
+        "depositWei": "120000000000000000",
+        "callback": {
+          "txHash": "0x779ea01687e1862105ea934507c2f42f523161d1c12350f6481911e9ea094586",
+          "blockNumber": 403178931,
+          "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+          "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "eventName": "EvaluationCompleted",
+          "decision": true,
+          "decisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+          "status": "Success",
+          "request": {
+            "source": "callbackTxInput",
+            "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+            "selector": "0x5dae1f1c",
+            "requestId": "5421327",
+            "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000008",
+            "uintResult": "8",
+            "callbackStatusRaw": "0",
+            "receiptId": "1",
+            "executionCostWei": "30000000000000000",
+            "status": "Success",
+            "responseStatus": "Success",
+            "responseValidator": null,
+            "getRequestError": "execution reverted (unknown custom error)"
+          }
+        },
+        "actionId": "5"
+      },
+      "firstReadValue": "8",
+      "firstDecision": true,
+      "beforeChallenge": {
+        "blockNumber": 403179056,
+        "vaultReservedWei": "20000000000000000",
+        "vaultBalanceWei": "11960000000000000000",
+        "predictionYesSharesForVaultWei": "40000000000000000",
+        "lendingSuppliedByVaultWei": "0",
+        "nativeTrading": {
+          "vaultTokenOutBalance": "0",
+          "poolWNativeBalance": "10719108091226292",
+          "poolTokenOutBalance": "78409449651660564891"
+        }
+      },
+      "challenge": {
+        "txHash": "0x0e230fa5f6cf5d7f64c7c1fa2378f59ae1bfa3f556763e574e8621c81b038df4",
+        "blockNumber": 403179124,
+        "requestId": "5421391",
+        "depositWei": "120000000000000000",
+        "callback": {
+          "txHash": "0x7c20191964335512e217a208e052bba61fa9027175095d4e387515cc61d2b07b",
+          "blockNumber": 403179141,
+          "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+          "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "eventName": "ChallengeResolved",
+          "agreed": false,
+          "rereadDecisionHash": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "status": "Success",
+          "request": {
+            "source": "callbackTxInput",
+            "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+            "selector": "0x5dae1f1c",
+            "requestId": "5421391",
+            "rawResult": "0x000000000000000000000000000000000000000000000000000000000000001e",
+            "uintResult": "30",
+            "callbackStatusRaw": "0",
+            "receiptId": "1",
+            "executionCostWei": "30000000000000000",
+            "status": "Success",
+            "responseStatus": "Success",
+            "responseValidator": null,
+            "getRequestError": "execution reverted (unknown custom error)"
+          }
+        },
+        "finalStatus": "RolledBack"
+      },
+      "rereadValue": "30",
+      "rereadDecision": false,
+      "afterChallenge": {
+        "blockNumber": 403179214,
+        "vaultReservedWei": "0",
+        "vaultBalanceWei": "11960000000000000000",
+        "predictionYesSharesForVaultWei": "40000000000000000",
+        "lendingSuppliedByVaultWei": "0",
+        "nativeTrading": {
+          "vaultTokenOutBalance": "0",
+          "poolWNativeBalance": "10719108091226292",
+          "poolTokenOutBalance": "78409449651660564891"
+        }
+      },
+      "outcome": "RolledBack"
+    }
+  },
+  "agree": {
+    "arm": {
+      "txHash": "0xb754be2e67628467d3d5cbebc34910115422312e220056acba9ead8a2c9da79f",
+      "blockNumber": 403179275,
+      "ruleId": "6"
+    },
+    "evaluation": {
+      "txHash": "0x370c2d21aa849a12e6ba8a8d7927fe4bace26a4ca71e85ffae82e2f81f74e4cf",
+      "blockNumber": 403179315,
+      "method": "evaluate",
+      "requestId": "5421452",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0x9f576df7d111a08ba5545098d359f5e97fe2dbab1fb0252b48a2e2ad8a1047b7",
+        "blockNumber": 403179333,
+        "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "EvaluationCompleted",
+        "decision": true,
+        "decisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421452",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000031",
+          "uintResult": "49",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "actionId": "6"
+    },
+    "firstReadValue": "49",
+    "firstDecision": true,
+    "beforeSettlement": {
+      "blockNumber": 403179410,
+      "vaultReservedWei": "20000000000000000",
+      "vaultBalanceWei": "11960000000000000000",
+      "predictionYesSharesForVaultWei": "40000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "challenge": {
+      "txHash": "0x7d6dffdbf65f9f6afef03d84b383d51b97028b4ce94d11720e07e457229f80a3",
+      "blockNumber": 403179477,
+      "requestId": "5421501",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0xf3793d8d41e3078c46b5ca9ae4ff57dd1b7d0b06001f74bdd796e0e95f5dd6b0",
+        "blockNumber": 403179497,
+        "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "ChallengeResolved",
+        "agreed": true,
+        "rereadDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421501",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "uintResult": "5",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "finalStatus": "Settled"
+    },
+    "rereadValue": "5",
+    "rereadDecision": true,
+    "afterSettlement": {
+      "blockNumber": 403179566,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11940000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    }
+  },
+  "nativeTrading": {
+    "arm": {
+      "txHash": "0x9749df72d4780728d43146c999e08d61ccc2bfd7253c746ae7f6321faa09fcd4",
+      "blockNumber": 403179630,
+      "ruleId": "7"
+    },
+    "swapPath": "0x4a3bc48c156384f9564fd65a53a2f3d534d8f2b70000000000000000000000000000000000000000da4fde38be7a2b959bf46e032ecfa21e64019b76",
+    "evaluation": {
+      "txHash": "0x2c3a3c9799c20cc60e1dd532d5cf34cbbb71a4abb98802462082d8330e708825",
+      "blockNumber": 403179668,
+      "method": "evaluate",
+      "requestId": "5421560",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0xddacceb29169ed893f69c4e7163d255940a00f0599737c7da4b5bc0bf6a47fdd",
+        "blockNumber": 403179690,
+        "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "EvaluationCompleted",
+        "decision": true,
+        "decisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421560",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000019",
+          "uintResult": "25",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "actionId": "7"
+    },
+    "beforeSettlement": {
+      "blockNumber": 403179766,
+      "vaultReservedWei": "10000000000000000",
+      "vaultBalanceWei": "11940000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "0",
+        "poolWNativeBalance": "10719108091226292",
+        "poolTokenOutBalance": "78409449651660564891"
+      }
+    },
+    "challenge": {
+      "txHash": "0xb8c3120abedc46057661f05da6452d5027bd777ff84b6217ddf6af48532ccd10",
+      "blockNumber": 403179830,
+      "requestId": "5421609",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0x99525f2c128eae81ffda4d675c3c91f26482186a7c61e6ab0990eb37071b3037",
+        "blockNumber": 403179850,
+        "from": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "ChallengeResolved",
+        "agreed": true,
+        "rereadDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421609",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000029",
+          "uintResult": "41",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "finalStatus": "Settled"
+    },
+    "afterSettlement": {
+      "blockNumber": 403179924,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "deltas": {
+      "vaultTokenOutBalance": "10657513967520926",
+      "poolWNativeBalance": "9994338000000000",
+      "poolTokenOutBalance": "-10657513967520926"
+    }
+  },
+  "onDemandTrigger": {
+    "arm": {
+      "txHash": "0x113f13a5327f4617c82a3ea4d89502b94b9ca3adaedcefd34bd0229850d1a56d",
+      "blockNumber": 403179989,
+      "ruleId": "8"
+    },
+    "beforeSettlement": {
+      "blockNumber": 403179996,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "evaluation": {
+      "txHash": "0xd7a08a6e7db3a560b78a99863da4ec24a07ab83c5f9fa5e4b167620f78136d1c",
+      "blockNumber": 403180071,
+      "method": "forceEvaluate",
+      "requestId": "5421685",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0x695f022fa747b226402ab3f24e355bced5f1cc03d3ee06636c6efdfed1631e93",
+        "blockNumber": 403180091,
+        "from": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "EvaluationCompleted",
+        "decision": true,
+        "decisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421685",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "uintResult": "5",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "actionId": "8"
+    },
+    "afterPending": {
+      "blockNumber": 403180172,
+      "vaultReservedWei": "10000000000000000",
+      "vaultBalanceWei": "11930000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "0",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    },
+    "challenge": {
+      "txHash": "0x0651f5a60232a7795926d3396d0d33af08b0cdda31610ade8629897d87626368",
+      "blockNumber": 403180240,
+      "requestId": "5421737",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0xc39b3f32de12d6ae89797f19b029d73b863c715925b02438c027fde4c3a37ae4",
+        "blockNumber": 403180259,
+        "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "ChallengeResolved",
+        "agreed": true,
+        "rereadDecisionHash": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49",
+        "status": "Success",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421737",
+          "rawResult": "0x0000000000000000000000000000000000000000000000000000000000000016",
+          "uintResult": "22",
+          "callbackStatusRaw": "0",
+          "receiptId": "1",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "finalStatus": "Settled"
+    },
+    "afterSettlement": {
+      "blockNumber": 403180329,
+      "vaultReservedWei": "0",
+      "vaultBalanceWei": "11920000000000000000",
+      "predictionYesSharesForVaultWei": "60000000000000000",
+      "lendingSuppliedByVaultWei": "10000000000000000",
+      "nativeTrading": {
+        "vaultTokenOutBalance": "10657513967520926",
+        "poolWNativeBalance": "20713446091226292",
+        "poolTokenOutBalance": "78398792137693043965"
+      }
+    }
+  },
+  "nonSuccessGuard": {
+    "arm": {
+      "txHash": "0x5e7b2c44c44cd14bb0c7a23aacd05caba596f2b9a41281f751bb6bf14726c11a",
+      "blockNumber": 403180398,
+      "ruleId": "9"
+    },
+    "evaluation": {
+      "txHash": "0x450a61475adbe629e467c34affe11cf7ef09402d87bc2eb8ce01aedee80d78e9",
+      "blockNumber": 403180448,
+      "method": "evaluate",
+      "requestId": "5421801",
+      "depositWei": "120000000000000000",
+      "callback": {
+        "txHash": "0x8f5cc53fc82e33db7beb635d7eecb371e3a8a77a47755477c11692a39715dc7a",
+        "blockNumber": 403180501,
+        "from": "0x05f1fE2DDF9B65576D3165E37C6A60e6c5Ba93De",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "eventName": "AgentRequestFailed",
+        "decision": null,
+        "decisionHash": null,
+        "status": "Failed",
+        "request": {
+          "source": "callbackTxInput",
+          "txTo": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "selector": "0x5dae1f1c",
+          "requestId": "5421801",
+          "rawResult": "0x7b227374657073223a5b7b226e616d65223a22726571756573745f7265636569766564222c22726571756573744964223a2235343231383031227d2c7b2261726773436f756e74223a332c2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a22726571756573745f6465636f646564227d2c7b2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a2268616e646c65725f73746172746564227d2c7b226572726f72223a2266657463682068747470733a2f2f6874747062696e2e6f72672f7374617475732f3530303a2066657463682068747470733a2f2f6874747062696e2e6f72672f7374617475732f3530303a20616c6c203420617474656d707473206661696c65642c206c617374206572726f723a2048545450203530303a20222c226e616d65223a226572726f72227d5d7d0a",
+          "uintResult": "55695350014810725740291211409812075872226224317059242478638570177750433490281",
+          "callbackStatusRaw": "0",
+          "receiptId": "0",
+          "executionCostWei": "30000000000000000",
+          "status": "Success",
+          "responseStatus": "Success",
+          "responseValidator": null,
+          "getRequestError": "execution reverted (unknown custom error)"
+        }
+      },
+      "actionId": null
+    },
+    "nextActionBefore": "9",
+    "nextActionAfter": "9",
+    "createdNoAction": true,
+    "nonSuccessGuardProven": true
+  },
+  "finalState": {
+    "blockNumber": 403180543,
+    "vaultReservedWei": "0",
+    "vaultBalanceWei": "11920000000000000000",
+    "predictionYesSharesForVaultWei": "60000000000000000",
+    "lendingSuppliedByVaultWei": "10000000000000000",
+    "nativeTrading": {
+      "vaultTokenOutBalance": "10657513967520926",
+      "poolWNativeBalance": "20713446091226292",
+      "poolTokenOutBalance": "78398792137693043965"
+    }
+  },
+  "txHashes": {
+    "deposit": "0x2a9cd4fcb793a2dce52f3b11f80447409cece3df67333fe4ee7a979cff674e49"
+  }
+}

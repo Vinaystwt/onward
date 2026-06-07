@@ -17,16 +17,20 @@ Create `.env` from `.env.example` and set `PRIVATE_KEY`.
 npm install
 npm run build
 npm run test
-npm run deploy:all
+npm run deploy:v2
 npm run day0
-npm run demo
+npm run demo:v2
+npm run verify:v2
 ```
 
 ## Artifacts
 
 - Deployments: `deployments.json`
+- No-hook/native-trading v2 deployments: `deployments-v2.json`
 - Day-0 agent measurements: `day0-results.json`
-- Demo harness results: `demo-results.json`
+- Legacy demo harness results: `demo-results.json`
+- No-hook/native-trading v2 demo results: `gap-demo-v2-results.json`
+- Read-only v2 verification report: `verification-v2.json`
 - ABIs: `out/**/<Contract>.json`
 - Contracts: `src/`
 - Deployment/demo scripts: `scripts/`
@@ -34,20 +38,19 @@ npm run demo
 
 ## Frontend Handoff
 
-Primary addresses are in `deployments.json`.
+Primary v2 addresses are in `deployments-v2.json`.
 
 User flow:
 
 1. Deposit STT with `Vault.depositFor(address user)` or withdraw with `Vault.withdraw(uint256 amount)`.
 2. Arm a rule through `RuleEngine.armRule(string plainText, EventSpec eventSpec, ActionSpec actionSpec, uint256 limitsRef)`.
 3. Trigger a live evaluation with `RuleEngine.evaluate(uint256 ruleId)` or demo-trigger it with `RuleEngine.forceEvaluate(uint256 ruleId)`.
-4. Watch `RuleEngine.RuleArmed`, `RuleEngine.RuleEvaluationRequested`, `AgentExecutor.AgentRequestCreated`, `Vault.PendingActionCreated`, `ReceiptLog.Receipt`, `Vault.ActionSettled`, and `Vault.ActionRolledBack`.
+4. Watch `RuleEngine.RuleArmed`, `RuleEngine.RuleEvaluationRequested`, `AgentExecutor.AgentRequestCreated`, `AgentExecutor.EvaluationCompleted`, `Vault.PendingActionOpened`, `ReceiptLog.Receipt`, `Challenge.ChallengeResolved`, `Vault.ActionSettled`, and `Vault.ActionRolledBack`.
 5. Challenge a pending action with `Challenge.challenge(uint256 actionId)`.
-6. Read receipts with `ReceiptLog.getReceipt(uint256 actionId)`, `ReceiptLog.receiptsByRule(uint256 ruleId)`, and `ReceiptLog.receiptsByWallet(address wallet)`.
+6. Read receipts with `ReceiptLog.getReceipt(uint256 actionId)`, `ReceiptLog.getActionsByRule(uint256 ruleId)`, and `ReceiptLog.getActionsByWallet(address wallet)`.
 
-The current demo connectors route through Option C venues deployed on Somnia testnet:
+The current v2 demo connectors route as follows:
 
-- Prediction: `MinimalPredictionMarket`
-- Trading: `ConstantProductAMM`
-- Lending: `MiniLendingPool`
-
+- Prediction: Option C `MinimalPredictionMarket`
+- Trading: native Somnia Exchange Algebra `SwapRouter` through `NativeAlgebraTradingAdapter`
+- Lending: Option C `MiniLendingPool`
