@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-06-07T15:44:20.262Z",
+  "user": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+  "actions": {
+    "prediction": {
+      "ruleId": "4",
+      "actionId": "3",
+      "finalStatus": "Settled"
+    },
+    "trading": {
+      "ruleId": "5",
+      "actionId": "4",
+      "finalStatus": "Settled"
+    },
+    "lending": {
+      "ruleId": "6",
+      "actionId": "5",
+      "finalStatus": "Settled"
+    },
+    "rollback": {
+      "ruleId": "7",
+      "actionId": "6",
+      "finalStatus": "RolledBack"
+    }
+  },
+  "venueState": {
+    "predictionYesSharesForVault": "100000000000000000",
+    "tradingTokenBalanceForVault": "4935753701339912729481",
+    "lendingSuppliedByVault": "50000000000000000"
+  },
+  "balanceBeforeStt": "192.912948028",
+  "balanceAfterStt": "186.80505032",
+  "sttConsumedIncludingVaultDeposit": "6.107897708"
+}

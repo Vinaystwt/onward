@@ -7,6 +7,7 @@ import {
   readDeployments,
   send,
   waitFor,
+  withRetry,
   wallet,
   writeJson
 } from "./lib.js";
@@ -52,7 +53,7 @@ async function main() {
   );
   const lending = contractAt("MiniLendingPool.sol", "MiniLendingPool", deployments.contracts.MiniLendingPool.address, signer);
 
-  const balanceBefore = await signer.provider.getBalance(user);
+  const balanceBefore = await withRetry(() => signer.provider.getBalance(user), "demo starting balance");
   await send("Vault.depositFor(demo)", vault.depositFor(user, { value: ethers.parseEther("5") }));
 
   async function arm(name, domain, threshold, actionValue, params = "0x") {
@@ -70,8 +71,8 @@ async function main() {
   }
 
   async function evaluateToPending(ruleId, label) {
-    const nextActionId = await vault.nextActionId();
-    const deposit = await executor.requiredDeposit(AgentKind.JsonUint);
+    const nextActionId = await withRetry(() => vault.nextActionId(), `${label} next action id`);
+    const deposit = await withRetry(() => executor.requiredDeposit(AgentKind.JsonUint), `${label} required deposit`);
     const receipt = await send(`${label}.evaluate`, rules.evaluate(ruleId, { value: deposit }));
     const event = parseEvent(rules, receipt, "RuleEvaluationRequested");
     const requestId = event.args.requestId;
@@ -81,13 +82,13 @@ async function main() {
   }
 
   async function challengeAndWait(actionId, label) {
-    const deposit = await challenge.requiredDeposit(AgentKind.JsonUint);
+    const deposit = await withRetry(() => challenge.requiredDeposit(AgentKind.JsonUint), `${label} challenge deposit`);
     const receipt = await send(`${label}.challenge`, challenge.challenge(actionId, { value: deposit }));
     const event = parseEvent(challenge, receipt, "ChallengeOpened");
     const requestId = event.args.requestId;
     console.log(`${label} challenge request ${requestId}`);
     await waitFor(async () => !(await challenge.pendingRequests(requestId)), `${label} challenge callback`);
-    const action = await vault.getPendingAction(actionId);
+    const action = await withRetry(() => vault.getPendingAction(actionId), `${label} final action`);
     return ActionStatus[Number(action.status)];
   }
 
@@ -130,7 +131,8 @@ async function main() {
   const rollbackAction = await evaluateToPending(rollbackRule, "rollback");
   const rollbackStatus = await challengeAndWait(rollbackAction, "rollback");
 
-  const balanceAfter = await signer.provider.getBalance(user);
+  const balanceAfter = await withRetry(() => signer.provider.getBalance(user), "demo ending balance");
+  const vaultAddress = await withRetry(() => vault.getAddress(), "vault address");
   const results = {
     generatedAt: new Date().toISOString(),
     user,
@@ -141,9 +143,15 @@ async function main() {
       rollback: { ruleId: rollbackRule.toString(), actionId: rollbackAction.toString(), finalStatus: rollbackStatus }
     },
     venueState: {
-      predictionYesSharesForVault: (await market.yesShares(deployments.demoMarketId || 1, await vault.getAddress())).toString(),
-      tradingTokenBalanceForVault: (await token.balanceOf(await vault.getAddress())).toString(),
-      lendingSuppliedByVault: (await lending.supplied(await vault.getAddress())).toString()
+      predictionYesSharesForVault: (
+        await withRetry(() => market.yesShares(deployments.demoMarketId || 1, vaultAddress), "prediction venue state")
+      ).toString(),
+      tradingTokenBalanceForVault: (
+        await withRetry(() => token.balanceOf(vaultAddress), "trading venue state")
+      ).toString(),
+      lendingSuppliedByVault: (
+        await withRetry(() => lending.supplied(vaultAddress), "lending venue state")
+      ).toString()
     },
     balanceBeforeStt: ethers.formatEther(balanceBefore),
     balanceAfterStt: ethers.formatEther(balanceAfter),

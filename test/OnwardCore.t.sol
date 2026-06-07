@@ -3,7 +3,6 @@ pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 import {OnwardTypes} from "../src/lib/OnwardTypes.sol";
-import {AgentCodec} from "../src/lib/AgentCodec.sol";
 import {AdapterRegistry} from "../src/AdapterRegistry.sol";
 import {AgentExecutor} from "../src/AgentExecutor.sol";
 import {Challenge} from "../src/Challenge.sol";

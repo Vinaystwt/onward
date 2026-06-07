@@ -94,8 +94,21 @@ export async function deploy(name, file, args = [], signer = wallet()) {
 export async function send(label, txPromise) {
   const tx = await txPromise;
   console.log(`${label}: ${tx.hash}`);
-  const receipt = await tx.wait();
-  return receipt;
+  try {
+    return await tx.wait();
+  } catch (error) {
+    if (!isTransientRpcError(error)) throw error;
+    console.warn(`transient RPC error while waiting for ${label}; polling ${tx.hash}`);
+    return await waitFor(
+      async () => {
+        const receipt = await tx.provider.getTransactionReceipt(tx.hash);
+        return receipt || false;
+      },
+      `${label} receipt`,
+      5 * 60 * 1000,
+      3000
+    );
+  }
 }
 
 export function readDeployments() {
@@ -110,14 +123,54 @@ export async function sleep(ms) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+export function isTransientRpcError(error) {
+  const message = String(error?.message || error || "");
+  const code = String(error?.code || "");
+  return (
+    code === "ECONNRESET" ||
+    code === "ETIMEDOUT" ||
+    code === "ECONNREFUSED" ||
+    code === "SERVER_ERROR" ||
+    message.includes("ECONNRESET") ||
+    message.includes("ETIMEDOUT") ||
+    message.includes("429") ||
+    message.includes("timeout") ||
+    message.includes("socket hang up")
+  );
+}
+
 export async function waitFor(predicate, label, timeoutMs = 20 * 60 * 1000, intervalMs = 5000) {
   const start = Date.now();
+  let transientFailures = 0;
   while (Date.now() - start < timeoutMs) {
-    const value = await predicate();
-    if (value) return value;
+    try {
+      const value = await predicate();
+      if (value) return value;
+      transientFailures = 0;
+    } catch (error) {
+      if (!isTransientRpcError(error)) throw error;
+      transientFailures += 1;
+      console.warn(`transient RPC error while waiting for ${label}; retry ${transientFailures}`);
+    }
     await sleep(intervalMs);
   }
   throw new Error(`Timed out waiting for ${label}`);
+}
+
+export async function withRetry(operation, label, timeoutMs = 2 * 60 * 1000, intervalMs = 3000) {
+  const start = Date.now();
+  let transientFailures = 0;
+  while (Date.now() - start < timeoutMs) {
+    try {
+      return await operation();
+    } catch (error) {
+      if (!isTransientRpcError(error)) throw error;
+      transientFailures += 1;
+      console.warn(`transient RPC error during ${label}; retry ${transientFailures}`);
+      await sleep(intervalMs);
+    }
+  }
+  throw new Error(`Timed out retrying ${label}`);
 }
 
 export function parseEvent(contract, receipt, eventName) {
