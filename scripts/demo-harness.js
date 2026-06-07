@@ -53,8 +53,9 @@ async function main() {
   );
   const lending = contractAt("MiniLendingPool.sol", "MiniLendingPool", deployments.contracts.MiniLendingPool.address, signer);
 
+  const txHashes = {};
   const balanceBefore = await withRetry(() => signer.provider.getBalance(user), "demo starting balance");
-  await send("Vault.depositFor(demo)", vault.depositFor(user, { value: ethers.parseEther("5") }));
+  txHashes.deposit = (await send("Vault.depositFor(demo)", vault.depositFor(user, { value: ethers.parseEther("5") }))).hash;
 
   async function arm(name, domain, threshold, actionValue, params = "0x") {
     const receipt = await send(
@@ -66,6 +67,7 @@ async function main() {
         1
       )
     );
+    txHashes[`${name}Arm`] = receipt.hash;
     const event = parseEvent(rules, receipt, "RuleArmed");
     return event.args.ruleId;
   }
@@ -74,6 +76,7 @@ async function main() {
     const nextActionId = await withRetry(() => vault.nextActionId(), `${label} next action id`);
     const deposit = await withRetry(() => executor.requiredDeposit(AgentKind.JsonUint), `${label} required deposit`);
     const receipt = await send(`${label}.evaluate`, rules.evaluate(ruleId, { value: deposit }));
+    txHashes[`${label}Evaluate`] = receipt.hash;
     const event = parseEvent(rules, receipt, "RuleEvaluationRequested");
     const requestId = event.args.requestId;
     console.log(`${label} agent request ${requestId}`);
@@ -84,6 +87,7 @@ async function main() {
   async function challengeAndWait(actionId, label) {
     const deposit = await withRetry(() => challenge.requiredDeposit(AgentKind.JsonUint), `${label} challenge deposit`);
     const receipt = await send(`${label}.challenge`, challenge.challenge(actionId, { value: deposit }));
+    txHashes[`${label}Challenge`] = receipt.hash;
     const event = parseEvent(challenge, receipt, "ChallengeOpened");
     const requestId = event.args.requestId;
     console.log(`${label} challenge request ${requestId}`);
@@ -127,7 +131,9 @@ async function main() {
     smallAction,
     ethers.AbiCoder.defaultAbiCoder().encode(["uint256"], [deployments.demoMarketId || 1])
   );
-  await send("AgentExecutor.injectWrongNextRead", executor.injectWrongNextRead(rollbackRule));
+  txHashes.injectWrongNextRead = (
+    await send("AgentExecutor.injectWrongNextRead", executor.injectWrongNextRead(rollbackRule))
+  ).hash;
   const rollbackAction = await evaluateToPending(rollbackRule, "rollback");
   const rollbackStatus = await challengeAndWait(rollbackAction, "rollback");
 
@@ -142,6 +148,7 @@ async function main() {
       lending: { ruleId: lendingRule.toString(), actionId: lendingAction.toString(), finalStatus: lendingStatus },
       rollback: { ruleId: rollbackRule.toString(), actionId: rollbackAction.toString(), finalStatus: rollbackStatus }
     },
+    txHashes,
     venueState: {
       predictionYesSharesForVault: (
         await withRetry(() => market.yesShares(deployments.demoMarketId || 1, vaultAddress), "prediction venue state")
