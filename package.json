@@ -1,0 +1,17 @@
+{
+  "name": "onward-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test -vv",
+    "deploy:all": "node scripts/deploy-all.js",
+    "demo": "node scripts/demo-harness.js",
+    "day0": "node scripts/day0.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ethers": "^6.15.0"
+  }
+}
