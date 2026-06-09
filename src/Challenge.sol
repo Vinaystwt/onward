@@ -16,6 +16,15 @@ contract Challenge is IAgentRequesterHandler, OwnableLite {
     mapping(uint256 => bool) public pendingRequests;
 
     event ChallengeOpened(uint256 indexed actionId, uint256 indexed requestId);
+    event ChallengeRead(
+        uint256 indexed actionId,
+        uint256 indexed requestId,
+        string source,
+        bytes rawOutput,
+        bool decision,
+        bytes32 decisionHash,
+        bool agreed
+    );
     event ChallengeResolved(uint256 indexed actionId, bool agreed, bytes32 rereadDecisionHash);
     event ChallengeFailed(uint256 indexed actionId, ResponseStatus status);
 
@@ -70,8 +79,17 @@ contract Challenge is IAgentRequesterHandler, OwnableLite {
 
         OnwardTypes.PendingActionView memory action = vault.getPendingAction(actionId);
         OnwardTypes.Rule memory rule = ruleEngine.getRule(action.ruleId);
-        (, bytes32 rereadDecisionHash) = AgentCodec.decide(rule.eventSpec, responses[0].result);
+        (bool rereadDecision, bytes32 rereadDecisionHash) = AgentCodec.decide(rule.eventSpec, responses[0].result);
         bool agreed = rereadDecisionHash == action.originalDecisionHash;
+        emit ChallengeRead(
+            actionId,
+            requestId,
+            AgentCodec.source(rule.eventSpec),
+            responses[0].result,
+            rereadDecision,
+            rereadDecisionHash,
+            agreed
+        );
         if (agreed) {
             vault.settleAfterChallenge(actionId);
         } else {

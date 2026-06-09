@@ -38,6 +38,7 @@ contract Vault is OwnableLite {
     event Deposited(address indexed payer, address indexed wallet, uint256 amount);
     event Withdrawn(address indexed wallet, uint256 amount);
     event PendingActionOpened(uint256 indexed actionId, uint256 indexed ruleId, address indexed wallet, address target, uint256 value);
+    event SpendLimitEnforced(uint256 indexed actionId, uint256 indexed ruleId, address indexed wallet, uint256 value);
     event ActionSettled(uint256 indexed actionId, address indexed target, uint256 value);
     event ActionRolledBack(uint256 indexed actionId);
     event ActionFailed(uint256 indexed actionId, bytes reason);
@@ -128,6 +129,7 @@ contract Vault is OwnableLite {
         });
         receiptLog.createReceipt(actionId, ruleId, wallet, source, rawOutput, decision, target, value, data);
         trackRecord.recordEvaluation(ruleId);
+        emit SpendLimitEnforced(actionId, ruleId, wallet, value);
         emit PendingActionOpened(actionId, ruleId, wallet, target, value);
     }
 

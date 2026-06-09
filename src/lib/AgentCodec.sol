@@ -50,7 +50,9 @@ library AgentCodec {
                 uint8(70)
             );
         }
-        string[] memory options = new string[](0);
+        string[] memory options = new string[](2);
+        options[0] = spec.expected;
+        options[1] = "no";
         return abi.encodeWithSelector(
             IParseWebsiteAgent.ExtractString.selector,
             spec.selector,

@@ -1,0 +1,165 @@
+{
+  "generatedAt": "2026-06-09T04:47:33.736Z",
+  "network": {
+    "name": "Somnia Testnet",
+    "chainId": 50312,
+    "rpcUrl": "https://dream-rpc.somnia.network",
+    "explorer": "https://shannon-explorer.somnia.network",
+    "agentPlatform": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776"
+  },
+  "deployer": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+  "agentIds": {
+    "JSON_API": "13174292974160097713",
+    "LLM_INFERENCE": "12847293847561029384",
+    "LLM_PARSE_WEBSITE": "12875401142070969085"
+  },
+  "contracts": {
+    "PolicyLimits": {
+      "address": "0xB58e41cf6f2C1509786c56743171464a097BA8aE",
+      "txHash": "0x346a2e1de9223ac643eaea959bcc609eee0fbe6481a65cfe6ab924036a94f9d6",
+      "purpose": "Per-rule spend caps, rate limits, and trust ceiling"
+    },
+    "ReceiptLog": {
+      "address": "0x542F6548D6D93416466dc4a62F8CE44FfF2997cd",
+      "txHash": "0xdb270ea9f408c8f33829f18c3e5ff91721f8670bab7cd7f344901317d6dc399c",
+      "purpose": "Queryable audit receipts for pending, settled, and rolled-back actions"
+    },
+    "TrackRecord": {
+      "address": "0x606AB70e0da747B07fB3411D2A1cf2647eAF5D7f",
+      "txHash": "0x8d041a6b56602d2af6cb8370c5c4ce50667f03092959809712b412824db14141",
+      "purpose": "Accuracy counters and rule leaderboard"
+    },
+    "Vault": {
+      "address": "0x26211197012061B75df41D44cf836aBBEB69b506",
+      "txHash": "0x335e6b8bee48149f39008e90b5a6c46f797e4444723f555846581b41fe7bc201",
+      "purpose": "Custodies STT, reserves pending actions, settles or rolls back"
+    },
+    "Registry": {
+      "address": "0x65f22f4cAD6438c1Ac7B77406fA22cBA1CaF8c9a",
+      "txHash": "0xc503662144ed01ebd5349db75def298dd4cc3d19e68b43409ca6568d256ccda8",
+      "purpose": "Supported event and action type registry"
+    },
+    "AdapterRegistry": {
+      "address": "0xc3AfbAAFA8C1Bc769A83996A27626a60c5Bfad44",
+      "txHash": "0x3d9e192f5226cf24ee4cc9f030bab57149c20c30510ee900b15f539b23a505d3",
+      "purpose": "Domain-to-adapter routing registry"
+    },
+    "RuleEngine": {
+      "address": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+      "txHash": "0xeba461fa96a76855699d6b1c560f15f802712dcdf0c5f19ed4884dd8586ba9c3",
+      "purpose": "Stores user rules and starts evaluation cycles"
+    },
+    "AgentExecutor": {
+      "address": "0x734E260E63d4a08a4F4b5F6177B938f6740A56d3",
+      "txHash": "0x0fb7ac67359ae877bc37a501e41879de58a0fe57e3ce8649b1bad70b26ecb604",
+      "purpose": "Creates Somnia Agent requests and opens pending vault actions"
+    },
+    "Challenge": {
+      "address": "0xFb74D0De3AaC051c123E0561ab904977E1bf4305",
+      "txHash": "0x86c2a3ea55705c020edb7f4aaf385d54453a5f038483b936c0b92c0e75e5804a",
+      "purpose": "Runs independent rereads and settles or rolls back pending actions"
+    },
+    "MinimalPredictionMarket": {
+      "address": "0x5092f13565abE4b72C1Ef1a4Fad24A08Cc9C273b",
+      "txHash": "0x21398861b8e5c152ada526bc0641b1fc16c49707fd370bcd16695e7e59b11918",
+      "purpose": "Option C prediction venue with real YES/NO balances"
+    },
+    "MiniLendingPool": {
+      "address": "0x0bB8ba5780F450163D2ccCe0ACbaEC9487A0C0eF",
+      "txHash": "0x5a4b30ff4c22ffd0f6723f5bf738bf3c7e72dc6548471800e1ede40fb9b190a5",
+      "purpose": "Option C lending venue with real supply/borrow accounting"
+    },
+    "PredictionMarketAdapter": {
+      "address": "0xBf75a971eD7B99CcC552d4622bECE0dE17Db0C34",
+      "txHash": "0x1e260c161a10ee5fdb574e4caa6f7f703d49dc6647a6f9c88561a58aa54e9d9a",
+      "purpose": "Encodes prediction market buy-YES actions"
+    },
+    "NativeAlgebraTradingAdapter": {
+      "address": "0xE890c191C416cAa6F0849A0AC073686F65c5D9CE",
+      "txHash": "0xca2293a0b113ae0ac6fb2576024dbf633fb3e2c5139669a5c9ca06517c16713d",
+      "purpose": "Encodes native Algebra exact-input swaps on Somnia Exchange"
+    },
+    "LendingAdapter": {
+      "address": "0xf324473e7e60de22593bF86725C08c4845783804",
+      "txHash": "0x970f34df3fcac95cb8586cc68f50de09dd082c5dc5e00b4215e27940da9f5a47",
+      "purpose": "Encodes lending supply actions"
+    }
+  },
+  "setupTransactions": [
+    {
+      "label": "PolicyLimits.setVault",
+      "txHash": "0x1b400762a634690ce5ac6ecb3e8824e8be87adb6721f137aad9e9eb39f433a13"
+    },
+    {
+      "label": "PolicyLimits.setRuleEngine",
+      "txHash": "0x5149a80bcbc5211b541e489c1a464ee4886a6f0ef019bfc89a8368447f2b5eeb"
+    },
+    {
+      "label": "PolicyLimits.setTrackRecord",
+      "txHash": "0x159cc93c0481545e32b57c227805c848a2b227f9ff5982901326cf75548b135e"
+    },
+    {
+      "label": "ReceiptLog.setWriter(Vault)",
+      "txHash": "0x9bd5fcc6a43be243b2e2bd7696a3f292041cbd9419cdd2772dbd3da9b6b2503e"
+    },
+    {
+      "label": "TrackRecord.setWriter(Vault)",
+      "txHash": "0x0eade709eb9917a85b25f90cf8a905894f9358f04f9db179064a31a69945dca8"
+    },
+    {
+      "label": "Vault.setExecutor",
+      "txHash": "0x80b1fa22267fa8d73899ddc6532b2f73a5b258f24f0e155f2a13659279fc194d"
+    },
+    {
+      "label": "Vault.setChallenge",
+      "txHash": "0x6d77af109095d6b58ff6019f692f6e4c49f2299ca954ecc80c5d17a3ad71993f"
+    },
+    {
+      "label": "RuleEngine.setExecutor",
+      "txHash": "0xfaaf0339c32795bda6741a00e4f7be0487e93ae9970697e24067b342c4bf4ad7"
+    },
+    {
+      "label": "AdapterRegistry.setAdapter(PREDICTION)",
+      "txHash": "0x8ce88b71965eb8ad5aff7210e0c5eb78f054493d7baccbd61619701de32d4979"
+    },
+    {
+      "label": "AdapterRegistry.setAdapter(TRADING_NATIVE)",
+      "txHash": "0xdd3326b418b84b7b6d95750ee1b9c9b6bc283b624cd6064149a7281549799e0a"
+    },
+    {
+      "label": "AdapterRegistry.setAdapter(LENDING)",
+      "txHash": "0x3ccb78c84e0ebdc37373f7e2588f517c51fff9fa6d03c9bb16ec48427cfa48ef"
+    },
+    {
+      "label": "MinimalPredictionMarket.createMarket",
+      "txHash": "0x4c19733d887f3a8e245fdc1ce3455957968b8ac48370196fadcc90086b0b8735"
+    },
+    {
+      "label": "MiniLendingPool.supply(seed)",
+      "txHash": "0xf8970b2efaf14c77bd5036c4ae4cf2649700ae0298c0f965e1c602c282e2c569"
+    }
+  ],
+  "nativeTrading": {
+    "router": "0xE94de02e52Eaf9F0f6Bf7f16E4927FcBc2c09bC7",
+    "factory": "0x0BFaCE9a5c9F884a4f09fadB83b69e81EA41424B",
+    "poolDeployer": "0x15fCbF9bC0797567053A8265b7E6f4eC43EA7327",
+    "pathDeployer": "0x0000000000000000000000000000000000000000",
+    "wNative": "0x4A3BC48C156384f9564Fd65A53a2f3D534D8f2b7",
+    "tokenOut": "0xDa4FDE38bE7a2b959BF46E032ECfA21e64019b76",
+    "tokenOutSymbol": "USDT.g",
+    "pool": "0xebF1d0F21fE80A52B264FB3a9e7a9384d583a134"
+  },
+  "provenanceEvents": {
+    "Vault": [
+      "SpendLimitEnforced"
+    ],
+    "Challenge": [
+      "ChallengeRead",
+      "ChallengeResolved"
+    ]
+  },
+  "demoMarketId": 1,
+  "balanceBeforeStt": "160.261962066",
+  "balanceAfterStt": "158.337783164",
+  "sttConsumedDeploy": "1.924178902"
+}
