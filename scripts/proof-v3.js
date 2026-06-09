@@ -15,9 +15,10 @@ import {
 } from "./lib.js";
 
 const EXPLORER = "https://shannon-explorer.somnia.network";
-const SIGNAL_INITIAL = ethers.parseEther("0.001");
-const SIGNAL_TOP_UP = ethers.parseEther("0.002");
-const SIGNAL_THRESHOLD = ethers.parseEther("0.002");
+const JSONBLOB_BASE = "https://jsonblob.com";
+const SIGNAL_INITIAL = 1n;
+const SIGNAL_CHANGED = 3n;
+const SIGNAL_THRESHOLD = 2n;
 const AgentKind = { JsonUint: 0, InferString: 1, ParseString: 2, ParseNumber: 3 };
 const Comparator = { Gt: 0, Gte: 1, Lt: 2, Lte: 3, Eq: 4, StringEq: 5 };
 const ActionStatus = ["None", "Pending", "Settled", "RolledBack", "Failed"];
@@ -26,10 +27,6 @@ const abi = ethers.AbiCoder.defaultAbiCoder();
 
 function txLink(hash) {
   return `${EXPLORER}/tx/${hash}`;
-}
-
-function signalUrl(address) {
-  return `${EXPLORER}/api/v2/addresses/${address}`;
 }
 
 function topicFor(value) {
@@ -57,36 +54,63 @@ function decisionFor(kind, value, comparator, threshold, expected) {
   return value === expected;
 }
 
-async function addressBalanceFromExplorer(address) {
+async function fetchWithTimeout(url, options = {}, timeoutMs = 20000) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
-  let response;
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    response = await fetch(signalUrl(address), { signal: controller.signal });
+    return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(timeout);
   }
-  if (!response.ok) throw new Error(`Shannon address API ${response.status}`);
-  const json = await response.json();
-  if (json.coin_balance === null || json.coin_balance === undefined) return null;
-  return BigInt(json.coin_balance);
 }
 
-async function waitExplorerBalance(address, predicate, label, timeoutMs = 10 * 60 * 1000) {
+async function createSignalSource(value, label) {
+  const body = { value: Number(value), label, updatedAt: new Date().toISOString() };
+  const response = await fetchWithTimeout(`${JSONBLOB_BASE}/api/jsonBlob`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  if (response.status !== 201) throw new Error(`JSONBlob create failed: ${response.status} ${await response.text()}`);
+  const location = response.headers.get("location");
+  if (!location) throw new Error("JSONBlob create did not return a Location header");
+  const url = new URL(location, JSONBLOB_BASE).toString();
+  return { url, body: await response.json() };
+}
+
+async function readSignalSource(url) {
+  const response = await fetchWithTimeout(url, { headers: { Accept: "application/json" } });
+  if (!response.ok) throw new Error(`JSONBlob read failed: ${response.status} ${await response.text()}`);
+  const body = await response.json();
+  return { body, value: BigInt(body.value), fetchedAt: new Date().toISOString() };
+}
+
+async function updateSignalSource(url, value, label) {
+  const body = { value: Number(value), label, updatedAt: new Date().toISOString() };
+  const response = await fetchWithTimeout(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  if (!response.ok) throw new Error(`JSONBlob update failed: ${response.status} ${await response.text()}`);
+  return { body: await response.json(), updatedAt: body.updatedAt };
+}
+
+async function waitSignalSource(url, predicate, label, timeoutMs = 2 * 60 * 1000) {
   const start = Date.now();
   let lastError = null;
   while (Date.now() - start < timeoutMs) {
     try {
-      const balance = await addressBalanceFromExplorer(address);
-      if (balance !== null && predicate(balance)) return balance;
-      lastError = balance === null ? new Error("Shannon address API returned no coin_balance") : null;
+      const result = await readSignalSource(url);
+      if (predicate(result.value)) return result;
+      lastError = new Error(`JSONBlob value was ${result.value.toString()}`);
     } catch (error) {
       lastError = error;
     }
-    await sleep(7000);
+    await sleep(3000);
   }
   const detail = lastError ? ` Last error: ${lastError.message}` : "";
-  throw new Error(`Timed out waiting for Shannon balance: ${label}.${detail}`);
+  throw new Error(`Timed out waiting for JSONBlob source: ${label}.${detail}`);
 }
 
 async function txSummary(provider, hash, note = "") {
@@ -143,6 +167,10 @@ async function waitEvaluation({ provider, executor, requestId, kind, fromBlock }
   const event = completed || failed;
   if (!event) throw new Error(`No evaluation callback event for request ${requestId}`);
   const callback = await decodeCallbackInput(provider, event.log.transactionHash, kind);
+  if (event.parsed.name === "AgentRequestFailed") {
+    callback.type = "failure-debug-bytes";
+    callback.value = null;
+  }
   return {
     tx: await txSummary(provider, event.log.transactionHash, event.parsed.name),
     eventName: event.parsed.name,
@@ -162,6 +190,10 @@ async function waitChallenge({ provider, challenge, requestId, actionId, kind, f
   const event = resolved || failed;
   if (!event) throw new Error(`No challenge callback event for request ${requestId}`);
   const callback = await decodeCallbackInput(provider, event.log.transactionHash, kind);
+  if (event.parsed.name === "ChallengeFailed") {
+    callback.type = "failure-debug-bytes";
+    callback.value = null;
+  }
   return {
     tx: await txSummary(provider, event.log.transactionHash, event.parsed.name),
     eventName: event.parsed.name,
@@ -243,15 +275,13 @@ async function finalReceipt(receiptLog, actionId) {
 
 async function buildSignalSequence(context, mode) {
   const { signer, provider, vault, rules, executor, challenge, receiptLog, marketId } = context;
-  const signal = ethers.Wallet.createRandom();
-  const initialFund = await send(`${mode}.fundSignalInitial`, signer.sendTransaction({ to: signal.address, value: SIGNAL_INITIAL }));
-  await waitExplorerBalance(signal.address, (balance) => balance === SIGNAL_INITIAL, `${mode} initial signal balance`);
+  const source = await createSignalSource(SIGNAL_INITIAL, `onward-${mode}-signal`);
+  const initialRead = await waitSignalSource(source.url, (value) => value === SIGNAL_INITIAL, `${mode} initial source value`);
 
-  const source = signalUrl(signal.address);
-  const rollbackText = `If the Shannon-reported signal balance for ${signal.address} is below 0.002 STT, buy YES; challenge after funding the signal above the threshold.`;
-  const settleText = `If the Shannon-reported signal balance for ${signal.address} is below 0.002 STT, buy YES; challenge without changing the signal.`;
+  const rollbackText = `If the controlled JSON source value at ${source.url} is below 2, buy YES; challenge after the owner updates the source above the threshold.`;
+  const settleText = `If the controlled JSON source value at ${source.url} is below 2, buy YES; challenge without changing the source.`;
   const ruleText = mode === "rollback" ? rollbackText : settleText;
-  const eventSpec_ = eventSpec(AgentKind.JsonUint, Comparator.Lt, source, "coin_balance", SIGNAL_THRESHOLD);
+  const eventSpec_ = eventSpec(AgentKind.JsonUint, Comparator.Lt, source.url, "value", SIGNAL_THRESHOLD);
   const actionValue = ethers.parseEther("0.01");
   const actionSpec_ = actionSpec(DOMAINS.PREDICTION, actionValue, abi.encode(["uint256"], [marketId]));
   const armed = await armRule({ rules, label: mode, plainText: ruleText, eventSpec_, actionSpec_ });
@@ -262,14 +292,15 @@ async function buildSignalSequence(context, mode) {
 
   let stateChange = null;
   if (mode === "rollback") {
-    const receipt = await send("rollback.fundSignalForDisagreement", signer.sendTransaction({ to: signal.address, value: SIGNAL_TOP_UP }));
-    const balance = await waitExplorerBalance(signal.address, (value) => value >= SIGNAL_INITIAL + SIGNAL_TOP_UP, "rollback changed signal balance");
-    stateChange = { tx: receipt, signalBalanceAfterWei: balance.toString() };
+    const before = await readSignalSource(source.url);
+    const update = await updateSignalSource(source.url, SIGNAL_CHANGED, "onward-rollback-signal");
+    const after = await waitSignalSource(source.url, (value) => value === SIGNAL_CHANGED, "rollback changed source value");
+    stateChange = { before, update, after };
   }
 
   const beforeChallenge = {
     reservedWei: (await vault.reserved(await signer.getAddress())).toString(),
-    signalBalanceWei: (await addressBalanceFromExplorer(signal.address)).toString()
+    sourceValue: (await readSignalSource(source.url)).value.toString()
   };
   const challenged = await challengeAction({
     provider,
@@ -281,7 +312,7 @@ async function buildSignalSequence(context, mode) {
   });
   const afterChallenge = {
     reservedWei: (await vault.reserved(await signer.getAddress())).toString(),
-    signalBalanceWei: (await addressBalanceFromExplorer(signal.address)).toString()
+    sourceValue: (await readSignalSource(source.url)).value.toString()
   };
 
   const firstValue = evaluation.callback.callback.value;
@@ -293,38 +324,48 @@ async function buildSignalSequence(context, mode) {
   }
 
   const sequence = [
-    await txSummary(provider, initialFund.hash, "owner funds fresh signal address with 1 wei"),
     await txSummary(provider, armed.tx.hash, "arm rule"),
     await txSummary(provider, evaluation.tx.hash, "evaluate and create first agent request"),
     evaluation.callback.tx
   ];
-  if (stateChange) {
-    sequence.push(await txSummary(provider, stateChange.tx.hash, "owner causes real on-chain signal balance change"));
-  }
   sequence.push(await txSummary(provider, challenged.tx.hash, "challenge pending action"));
   sequence.push(challenged.callback.tx);
 
   return {
     ruleText,
-    condition: `${source}#coin_balance < ${SIGNAL_THRESHOLD.toString()} wei`,
-    signalAddress: signal.address,
+    condition: `${source.url}#value < ${SIGNAL_THRESHOLD.toString()}`,
+    source: {
+      kind: "controlled-json",
+      url: source.url,
+      selector: "value",
+      initialHttpRead: {
+        value: initialRead.value.toString(),
+        body: initialRead.body,
+        fetchedAt: initialRead.fetchedAt
+      }
+    },
     firstRead: {
       requestId: evaluation.requestId.toString(),
-      valueWei: firstValue,
+      value: firstValue,
       decision: evaluation.callback.decision,
       callbackTx: evaluation.callback.tx.txHash
     },
     stateChange: stateChange
       ? {
-          txHash: stateChange.tx.hash,
-          explorerUrl: txLink(stateChange.tx.hash),
-          blockNumber: stateChange.tx.blockNumber,
-          signalBalanceAfterWei: stateChange.signalBalanceAfterWei
+          kind: "HTTP PUT",
+          url: source.url,
+          beforeValue: stateChange.before.value.toString(),
+          beforeBody: stateChange.before.body,
+          updateBody: stateChange.update.body,
+          afterValue: stateChange.after.value.toString(),
+          afterBody: stateChange.after.body,
+          updatedAt: stateChange.update.updatedAt,
+          fetchedAt: stateChange.after.fetchedAt
         }
       : null,
     reread: {
       requestId: challenged.requestId.toString(),
-      valueWei: rereadValue,
+      value: rereadValue,
       decision: decisionFor(AgentKind.JsonUint, rereadValue, Comparator.Lt, SIGNAL_THRESHOLD, ""),
       agreed: challenged.callback.agreed,
       callbackTx: challenged.callback.tx.txHash
@@ -341,8 +382,8 @@ async function buildSignalSequence(context, mode) {
     sequence,
     summary:
       mode === "rollback"
-        ? `First read saw ${firstValue} wei (<${SIGNAL_THRESHOLD.toString()}) and opened action; owner funded signal to ${afterChallenge.signalBalanceWei} wei; challenge reread disagreed and rolled back.`
-        : `First read saw ${firstValue} wei (<${SIGNAL_THRESHOLD.toString()}); no state change occurred; challenge reread ${rereadValue} wei agreed and settled.`
+        ? `First read saw ${firstValue} (<${SIGNAL_THRESHOLD.toString()}) and opened action; owner updated source to ${afterChallenge.sourceValue}; challenge reread disagreed and rolled back.`
+        : `First read saw ${firstValue} (<${SIGNAL_THRESHOLD.toString()}); no source change occurred; challenge reread ${rereadValue} agreed and settled.`
   };
 }
 
@@ -429,6 +470,88 @@ async function buildInterpretiveSequence(context) {
   };
 }
 
+async function diagnoseReadPaths(context) {
+  const { provider, rules, executor, vault } = context;
+  const blockNumber = await provider.getBlockNumber();
+  const rpcGetUrl = `https://dream-rpc.somnia.network?jsonrpc=2.0&method=eth_blockNumber&params=[]&id=1`;
+  let localRpcGet = null;
+  try {
+    const response = await fetchWithTimeout(rpcGetUrl);
+    localRpcGet = {
+      url: rpcGetUrl,
+      status: response.status,
+      body: (await response.text()).slice(0, 500)
+    };
+  } catch (error) {
+    localRpcGet = { url: rpcGetUrl, error: error.message };
+  }
+
+  const eventSpec_ = eventSpec(AgentKind.JsonUint, Comparator.Eq, rpcGetUrl, "result", 0);
+  const actionSpec_ = actionSpec(DOMAINS.LENDING, ethers.parseEther("0.001"), "0x");
+  const armed = await armRule({
+    rules,
+    label: "diagnose.rpcGet",
+    plainText: "Diagnostic: try to read Somnia RPC through the JSON API GET primitive.",
+    eventSpec_,
+    actionSpec_
+  });
+  const evaluation = await evaluateRule({
+    provider,
+    rules,
+    executor,
+    vault,
+    ruleId: armed.ruleId,
+    kind: AgentKind.JsonUint,
+    label: "diagnose.rpcGet"
+  });
+
+  const source = await createSignalSource(SIGNAL_INITIAL, "onward-diagnostic-source");
+  const first = await waitSignalSource(source.url, (value) => value === SIGNAL_INITIAL, "diagnostic initial JSONBlob value");
+  const update = await updateSignalSource(source.url, SIGNAL_CHANGED, "onward-diagnostic-source");
+  const second = await waitSignalSource(source.url, (value) => value === SIGNAL_CHANGED, "diagnostic changed JSONBlob value");
+
+  return {
+    latestRpcBlockAtDiagnosis: blockNumber,
+    rpcPostPath: {
+      usable: false,
+      reason:
+        "The deployed Somnia JSON API agent interface accepts a GET URL and selector only; it exposes no POST body field for JSON-RPC."
+    },
+    rpcGetPath: {
+      localFetch: localRpcGet,
+      agentProbe: {
+        armRule: await txSummary(provider, armed.tx.hash, "arm RPC GET diagnostic rule"),
+        evaluate: await txSummary(provider, evaluation.tx.hash, "evaluate RPC GET diagnostic rule"),
+        callback: evaluation.callback.tx,
+        callbackEvent: evaluation.callback.eventName,
+        callbackStatus: evaluation.callback.status,
+        decodedCallback: evaluation.callback.callback,
+        openedActionId: evaluation.actionId ? evaluation.actionId.toString() : null
+      }
+    },
+    controlledJsonPath: {
+      usable: true,
+      url: source.url,
+      selector: "value",
+      initial: {
+        value: first.value.toString(),
+        body: first.body,
+        fetchedAt: first.fetchedAt
+      },
+      update: {
+        method: "PUT",
+        body: update.body,
+        updatedAt: update.updatedAt
+      },
+      changed: {
+        value: second.value.toString(),
+        body: second.body,
+        fetchedAt: second.fetchedAt
+      }
+    }
+  };
+}
+
 function provenanceMapping(deployments) {
   return {
     USER_DEFINED: [
@@ -495,6 +618,9 @@ async function main() {
     provenanceMapping: provenanceMapping(deployments)
   };
 
+  if (mode === "all") {
+    report.sourceDiagnostics = await diagnoseReadPaths(context);
+  }
   if (mode === "rollback" || mode === "all") {
     report.rollback = await buildSignalSequence(context, "rollback");
   }

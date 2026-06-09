@@ -1,0 +1,631 @@
+{
+  "generatedAt": "2026-06-09T05:43:25.229Z",
+  "chain": {
+    "name": "Somnia Testnet",
+    "chainId": 50312,
+    "rpc": "https://dream-rpc.somnia.network",
+    "explorer": "https://shannon-explorer.somnia.network"
+  },
+  "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+  "deploymentsFile": "deployments-v3.json",
+  "deposit": {
+    "note": "deposit proof funds into Vault",
+    "txHash": "0xf3c1f32f1d8f0e0f1db00107ee7c94090cbce69668b3508cb262d988fe4aca02",
+    "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xf3c1f32f1d8f0e0f1db00107ee7c94090cbce69668b3508cb262d988fe4aca02",
+    "blockNumber": 404394059,
+    "status": "success",
+    "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+    "to": "0x26211197012061B75df41D44cf836aBBEB69b506",
+    "valueWei": "1000000000000000000"
+  },
+  "provenanceMapping": {
+    "USER_DEFINED": [
+      "RuleEngine.getRule(ruleId) on 0x9E5C97B83696eC46db29877428E1F2528984Ca80: plainText, eventSpec, actionSpec, limitsRef",
+      "PolicyLimits.limits(wallet, ruleId) on 0xB58e41cf6f2C1509786c56743171464a097BA8aE: maxSpend, periodSeconds, maxSpendPerPeriod"
+    ],
+    "ORACLE_SOURCE": [
+      "ReceiptLog.getReceipt(actionId) on 0x542F6548D6D93416466dc4a62F8CE44FfF2997cd: source and rawOutput",
+      "ReceiptLog.Receipt(actionId, ruleId, wallet, decision, Pending)"
+    ],
+    "AGENT_INFERRED": [
+      "AgentExecutor.EvaluationCompleted(requestId, ruleId, decision, decisionHash)",
+      "Vault.getPendingAction(actionId): rawOutput and originalDecisionHash",
+      "ReceiptLog.getReceipt(actionId): decision, rawOutput, target, value, data"
+    ],
+    "ON_CHAIN_ENFORCED": [
+      "Vault.SpendLimitEnforced(actionId, ruleId, wallet, value)",
+      "Vault.PendingActionOpened(actionId, ruleId, wallet, target, value)",
+      "PolicyLimits.usages(wallet, ruleId) and limits(wallet, ruleId)"
+    ],
+    "CONSENSUS_VERIFIED": [
+      "Challenge.ChallengeRead(actionId, requestId, source, rawOutput, decision, decisionHash, agreed)",
+      "Challenge.ChallengeResolved(actionId, agreed, rereadDecisionHash)",
+      "Vault.ActionRolledBack(actionId) or Vault.ActionSettled(actionId, target, value)",
+      "ReceiptLog.getReceipt(actionId).status"
+    ]
+  },
+  "sourceDiagnostics": {
+    "latestRpcBlockAtDiagnosis": 404394074,
+    "rpcPostPath": {
+      "usable": false,
+      "reason": "The deployed Somnia JSON API agent interface accepts a GET URL and selector only; it exposes no POST body field for JSON-RPC."
+    },
+    "rpcGetPath": {
+      "localFetch": {
+        "url": "https://dream-rpc.somnia.network?jsonrpc=2.0&method=eth_blockNumber&params=[]&id=1",
+        "status": 200,
+        "body": "{\"jsonrpc\":\"2.0\",\"id\":\"unknown\",\"error\":{\"code\":-32600,\"message\":\"invalid request\",\"data\":null}}"
+      },
+      "agentProbe": {
+        "armRule": {
+          "note": "arm RPC GET diagnostic rule",
+          "txHash": "0xc75f5f9649febf61ae6c195cc27cb0eb2b2ac7a519ccc7d158fc62eb3cfa2fc3",
+          "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xc75f5f9649febf61ae6c195cc27cb0eb2b2ac7a519ccc7d158fc62eb3cfa2fc3",
+          "blockNumber": 404394116,
+          "status": "success",
+          "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+          "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+          "valueWei": "0"
+        },
+        "evaluate": {
+          "note": "evaluate RPC GET diagnostic rule",
+          "txHash": "0x60b262beab9dbdfadc64c2c80a1f05c03f645ad41bd0a730b6890b0f02e8f071",
+          "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x60b262beab9dbdfadc64c2c80a1f05c03f645ad41bd0a730b6890b0f02e8f071",
+          "blockNumber": 404394163,
+          "status": "success",
+          "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+          "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+          "valueWei": "120000000000000000"
+        },
+        "callback": {
+          "note": "AgentRequestFailed",
+          "txHash": "0x524ede87dfff0ca72818284445178a428d623612060ccf050c08e253026b92fa",
+          "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x524ede87dfff0ca72818284445178a428d623612060ccf050c08e253026b92fa",
+          "blockNumber": 404394182,
+          "status": "success",
+          "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+          "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+          "valueWei": "0"
+        },
+        "callbackEvent": "AgentRequestFailed",
+        "callbackStatus": "Failed",
+        "decodedCallback": {
+          "requestId": "5792158",
+          "callbackStatusRaw": "0",
+          "receiptId": "0",
+          "executionCostWei": "30000000000000000",
+          "raw": "0x7b227374657073223a5b7b226e616d65223a22726571756573745f7265636569766564222c22726571756573744964223a2235373932313538227d2c7b2261726773436f756e74223a332c2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a22726571756573745f6465636f646564227d2c7b2266756e6374696f6e4e616d65223a22666574636855696e74222c226e616d65223a2268616e646c65725f73746172746564227d2c7b226572726f72223a2265787472616374205c22726573756c745c223a206b6579205c22726573756c745c22206e6f7420666f756e6420696e206f626a6563742028706174683a20726573756c7429222c226e616d65223a226572726f72227d5d7d0a",
+          "type": "failure-debug-bytes",
+          "value": null
+        },
+        "openedActionId": null
+      }
+    },
+    "controlledJsonPath": {
+      "usable": true,
+      "url": "https://jsonblob.com/api/jsonBlob/019eaae8-860a-79c8-962c-52dd4f148a25",
+      "selector": "value",
+      "initial": {
+        "value": "1",
+        "body": {
+          "value": 1,
+          "label": "onward-diagnostic-source",
+          "updatedAt": "2026-06-09T05:43:44.992Z"
+        },
+        "fetchedAt": "2026-06-09T05:43:47.290Z"
+      },
+      "update": {
+        "method": "PUT",
+        "body": {
+          "value": 3,
+          "label": "onward-diagnostic-source",
+          "updatedAt": "2026-06-09T05:43:47.291Z"
+        },
+        "updatedAt": "2026-06-09T05:43:47.291Z"
+      },
+      "changed": {
+        "value": "3",
+        "body": {
+          "value": 3,
+          "label": "onward-diagnostic-source",
+          "updatedAt": "2026-06-09T05:43:47.291Z"
+        },
+        "fetchedAt": "2026-06-09T05:43:49.052Z"
+      }
+    }
+  },
+  "rollback": {
+    "ruleText": "If the controlled JSON source value at https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761 is below 2, buy YES; challenge after the owner updates the source above the threshold.",
+    "condition": "https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761#value < 2",
+    "source": {
+      "kind": "controlled-json",
+      "url": "https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761",
+      "selector": "value",
+      "initialHttpRead": {
+        "value": "1",
+        "body": {
+          "value": 1,
+          "label": "onward-rollback-signal",
+          "updatedAt": "2026-06-09T05:43:50.822Z"
+        },
+        "fetchedAt": "2026-06-09T05:43:51.943Z"
+      }
+    },
+    "firstRead": {
+      "requestId": "5792228",
+      "value": "1",
+      "decision": true,
+      "callbackTx": "0xab888985cfe08f65559d355f133ca3f0d9a4f422c45ce6f909a4cb19f11f9534"
+    },
+    "stateChange": {
+      "kind": "HTTP PUT",
+      "url": "https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761",
+      "beforeValue": "1",
+      "beforeBody": {
+        "value": 1,
+        "label": "onward-rollback-signal",
+        "updatedAt": "2026-06-09T05:43:50.822Z"
+      },
+      "updateBody": {
+        "value": 3,
+        "label": "onward-rollback-signal",
+        "updatedAt": "2026-06-09T05:44:09.298Z"
+      },
+      "afterValue": "3",
+      "afterBody": {
+        "value": 3,
+        "label": "onward-rollback-signal",
+        "updatedAt": "2026-06-09T05:44:09.298Z"
+      },
+      "updatedAt": "2026-06-09T05:44:09.298Z",
+      "fetchedAt": "2026-06-09T05:44:11.042Z"
+    },
+    "reread": {
+      "requestId": "5792280",
+      "value": "3",
+      "decision": false,
+      "agreed": false,
+      "callbackTx": "0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50"
+    },
+    "finalOutcome": {
+      "actionId": "2",
+      "status": "RolledBack",
+      "outcomeTxHash": "0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50",
+      "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50"
+    },
+    "beforeChallenge": {
+      "reservedWei": "20000000000000000",
+      "sourceValue": "3"
+    },
+    "afterChallenge": {
+      "reservedWei": "10000000000000000",
+      "sourceValue": "3"
+    },
+    "finalReceipt": {
+      "actionId": "2",
+      "ruleId": "3",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "source": "https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761#value",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "decision": true,
+      "target": "0x5092f13565abE4b72C1Ef1a4Fad24A08Cc9C273b",
+      "valueWei": "10000000000000000",
+      "data": "0x061dd98d0000000000000000000000000000000000000000000000000000000000000001",
+      "status": "RolledBack",
+      "createdAt": "1780983840",
+      "updatedAt": "1780983856"
+    },
+    "sequence": [
+      {
+        "note": "arm rule",
+        "txHash": "0xe2da8f1c9f24a53ed860d1566b84b5e688a5dcb2716678f616359ecfee3f248c",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xe2da8f1c9f24a53ed860d1566b84b5e688a5dcb2716678f616359ecfee3f248c",
+        "blockNumber": 404394357,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "0"
+      },
+      {
+        "note": "evaluate and create first agent request",
+        "txHash": "0x038a5e63471b7ec164e9a673336107e9044bc69f2b919718d4d73ac12fc47ee5",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x038a5e63471b7ec164e9a673336107e9044bc69f2b919718d4d73ac12fc47ee5",
+        "blockNumber": 404394398,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "120000000000000000"
+      },
+      {
+        "note": "EvaluationCompleted",
+        "txHash": "0xab888985cfe08f65559d355f133ca3f0d9a4f422c45ce6f909a4cb19f11f9534",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xab888985cfe08f65559d355f133ca3f0d9a4f422c45ce6f909a4cb19f11f9534",
+        "blockNumber": 404394411,
+        "status": "success",
+        "from": "0x1Cb38b3ee632B5dCc0347dB81766606d6Aad4926",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      },
+      {
+        "note": "challenge pending action",
+        "txHash": "0xe4fefdef5d66186a1d38b7090200608621a68d17e3fa60d7f0f39fadf321a31b",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xe4fefdef5d66186a1d38b7090200608621a68d17e3fa60d7f0f39fadf321a31b",
+        "blockNumber": 404394566,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0xFb74D0De3AaC051c123E0561ab904977E1bf4305",
+        "valueWei": "120000000000000000"
+      },
+      {
+        "note": "ChallengeResolved",
+        "txHash": "0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50",
+        "blockNumber": 404394574,
+        "status": "success",
+        "from": "0x55Acbe370872c7D90F504eF169217a00c29E2A33",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      }
+    ],
+    "summary": "First read saw 1 (<2) and opened action; owner updated source to 3; challenge reread disagreed and rolled back."
+  },
+  "settle": {
+    "ruleText": "If the controlled JSON source value at https://jsonblob.com/api/jsonBlob/019eaae9-258e-7208-84da-9e8885276de8 is below 2, buy YES; challenge without changing the source.",
+    "condition": "https://jsonblob.com/api/jsonBlob/019eaae9-258e-7208-84da-9e8885276de8#value < 2",
+    "source": {
+      "kind": "controlled-json",
+      "url": "https://jsonblob.com/api/jsonBlob/019eaae9-258e-7208-84da-9e8885276de8",
+      "selector": "value",
+      "initialHttpRead": {
+        "value": "1",
+        "body": {
+          "value": 1,
+          "label": "onward-settle-signal",
+          "updatedAt": "2026-06-09T05:44:26.482Z"
+        },
+        "fetchedAt": "2026-06-09T05:44:28.061Z"
+      }
+    },
+    "firstRead": {
+      "requestId": "5792338",
+      "value": "1",
+      "decision": true,
+      "callbackTx": "0x65ee62eaeb46b7bc61f139249b49c11770123bae2beb2754f46061a64cc2c8b4"
+    },
+    "stateChange": null,
+    "reread": {
+      "requestId": "5792369",
+      "value": "1",
+      "decision": true,
+      "agreed": true,
+      "callbackTx": "0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a"
+    },
+    "finalOutcome": {
+      "actionId": "3",
+      "status": "Settled",
+      "outcomeTxHash": "0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a",
+      "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a"
+    },
+    "beforeChallenge": {
+      "reservedWei": "20000000000000000",
+      "sourceValue": "1"
+    },
+    "afterChallenge": {
+      "reservedWei": "10000000000000000",
+      "sourceValue": "1"
+    },
+    "finalReceipt": {
+      "actionId": "3",
+      "ruleId": "4",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "source": "https://jsonblob.com/api/jsonBlob/019eaae9-258e-7208-84da-9e8885276de8#value",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "decision": true,
+      "target": "0x5092f13565abE4b72C1Ef1a4Fad24A08Cc9C273b",
+      "valueWei": "10000000000000000",
+      "data": "0x061dd98d0000000000000000000000000000000000000000000000000000000000000001",
+      "status": "Settled",
+      "createdAt": "1780983875",
+      "updatedAt": "1780983885"
+    },
+    "sequence": [
+      {
+        "note": "arm rule",
+        "txHash": "0x6ae6763ea07b0c7cae63b8619b9eb0021557b5172f57b92ea5fb7b08e6c8cdc3",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x6ae6763ea07b0c7cae63b8619b9eb0021557b5172f57b92ea5fb7b08e6c8cdc3",
+        "blockNumber": 404394716,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "0"
+      },
+      {
+        "note": "evaluate and create first agent request",
+        "txHash": "0xf89f77b01d01070cf01eff91fafe670fa7bae2b8076838b0dbd1707f4cd83d4d",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xf89f77b01d01070cf01eff91fafe670fa7bae2b8076838b0dbd1707f4cd83d4d",
+        "blockNumber": 404394758,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "120000000000000000"
+      },
+      {
+        "note": "EvaluationCompleted",
+        "txHash": "0x65ee62eaeb46b7bc61f139249b49c11770123bae2beb2754f46061a64cc2c8b4",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x65ee62eaeb46b7bc61f139249b49c11770123bae2beb2754f46061a64cc2c8b4",
+        "blockNumber": 404394766,
+        "status": "success",
+        "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      },
+      {
+        "note": "challenge pending action",
+        "txHash": "0xd46df1992d454cd122b9a8255ae94e50a72f8344f6ee7eb52798f51881826759",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xd46df1992d454cd122b9a8255ae94e50a72f8344f6ee7eb52798f51881826759",
+        "blockNumber": 404394851,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0xFb74D0De3AaC051c123E0561ab904977E1bf4305",
+        "valueWei": "120000000000000000"
+      },
+      {
+        "note": "ChallengeResolved",
+        "txHash": "0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a",
+        "blockNumber": 404394860,
+        "status": "success",
+        "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      }
+    ],
+    "summary": "First read saw 1 (<2); no source change occurred; challenge reread 1 agreed and settled."
+  },
+  "interpretive": {
+    "ruleText": "Interpretive demo: classify an unstructured Onward operations bulletin as SAFE_TO_EXECUTE before supplying lending liquidity.",
+    "condition": "inferString classifies controlled unstructured operations bulletin as SAFE_TO_EXECUTE/no",
+    "sourceText": "Onward operator bulletin: Somnia Exchange venue is open, demo liquidity is normal, and no emergency pause is active.",
+    "firstRead": {
+      "requestId": "5792436",
+      "value": "SAFE_TO_EXECUTE",
+      "decision": true,
+      "callbackTx": "0x3d50e4420d80efb7113ce4dd14a3ad0449aebae1476a364667088d71ad993c30"
+    },
+    "reread": {
+      "requestId": "5792461",
+      "value": "SAFE_TO_EXECUTE",
+      "decision": true,
+      "agreed": true,
+      "callbackTx": "0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f"
+    },
+    "finalOutcome": {
+      "actionId": "4",
+      "status": "Settled",
+      "outcomeTxHash": "0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f",
+      "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f"
+    },
+    "finalReceipt": {
+      "actionId": "4",
+      "ruleId": "5",
+      "wallet": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+      "source": "controlled:onward-operator-bulletin#classification",
+      "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f534146455f544f5f455845435554450000000000000000000000000000000000",
+      "decision": true,
+      "target": "0x0bB8ba5780F450163D2ccCe0ACbaEC9487A0C0eF",
+      "valueWei": "10000000000000000",
+      "data": "0x047fc9aa",
+      "status": "Settled",
+      "createdAt": "1780983907",
+      "updatedAt": "1780983915"
+    },
+    "sequence": [
+      {
+        "note": "arm interpretive rule",
+        "txHash": "0xa6dea401dd4aadcdac19b3989b14c9a7180806fea16f5bbe9dca74870031efd4",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0xa6dea401dd4aadcdac19b3989b14c9a7180806fea16f5bbe9dca74870031efd4",
+        "blockNumber": 404395030,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "0"
+      },
+      {
+        "note": "evaluate inferString rule",
+        "txHash": "0x9edebd08f15bdfb37c1971aa52c21882d04494141bc5138fcd0d6871efc856cf",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x9edebd08f15bdfb37c1971aa52c21882d04494141bc5138fcd0d6871efc856cf",
+        "blockNumber": 404395072,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0x9E5C97B83696eC46db29877428E1F2528984Ca80",
+        "valueWei": "240000000000000000"
+      },
+      {
+        "note": "EvaluationCompleted",
+        "txHash": "0x3d50e4420d80efb7113ce4dd14a3ad0449aebae1476a364667088d71ad993c30",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x3d50e4420d80efb7113ce4dd14a3ad0449aebae1476a364667088d71ad993c30",
+        "blockNumber": 404395079,
+        "status": "success",
+        "from": "0x1Cb38b3ee632B5dCc0347dB81766606d6Aad4926",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      },
+      {
+        "note": "challenge interpretive pending action",
+        "txHash": "0x56bf0484ab7be4f6172913e1d29f55970b54f78e6ba6ef5f13de5462c122a7e1",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x56bf0484ab7be4f6172913e1d29f55970b54f78e6ba6ef5f13de5462c122a7e1",
+        "blockNumber": 404395152,
+        "status": "success",
+        "from": "0x94c188F8280cA706949CC030F69e42B5544514ac",
+        "to": "0xFb74D0De3AaC051c123E0561ab904977E1bf4305",
+        "valueWei": "240000000000000000"
+      },
+      {
+        "note": "ChallengeResolved",
+        "txHash": "0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f",
+        "explorerUrl": "https://shannon-explorer.somnia.network/tx/0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f",
+        "blockNumber": 404395158,
+        "status": "success",
+        "from": "0x3E05e29029C60E000C8F01EB5AC9cEE6b242D7e0",
+        "to": "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776",
+        "valueWei": "0"
+      }
+    ],
+    "summary": "inferString classified the bulletin as SAFE_TO_EXECUTE; challenge reread agreed and settled."
+  },
+  "balance": {
+    "beforeStt": "155.167377321999999988",
+    "afterStt": "152.914809485999999988",
+    "spentStt": "2.252567836",
+    "vaultBalanceWei": "3980000000000000000",
+    "vaultReservedWei": "10000000000000000"
+  },
+  "verification": {
+    "verifiedAt": "2026-06-09T05:48:19.336Z",
+    "latestBlock": 404396989,
+    "walletBalanceWei": "152914809485999999988",
+    "allProofTransactionsExistAndSucceeded": true,
+    "txChecks": [
+      {
+        "hash": "0xf3c1f32f1d8f0e0f1db00107ee7c94090cbce69668b3508cb262d988fe4aca02",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394059
+      },
+      {
+        "hash": "0xc75f5f9649febf61ae6c195cc27cb0eb2b2ac7a519ccc7d158fc62eb3cfa2fc3",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394116
+      },
+      {
+        "hash": "0x60b262beab9dbdfadc64c2c80a1f05c03f645ad41bd0a730b6890b0f02e8f071",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394163
+      },
+      {
+        "hash": "0x524ede87dfff0ca72818284445178a428d623612060ccf050c08e253026b92fa",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394182
+      },
+      {
+        "hash": "0xe2da8f1c9f24a53ed860d1566b84b5e688a5dcb2716678f616359ecfee3f248c",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394357
+      },
+      {
+        "hash": "0x038a5e63471b7ec164e9a673336107e9044bc69f2b919718d4d73ac12fc47ee5",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394398
+      },
+      {
+        "hash": "0xab888985cfe08f65559d355f133ca3f0d9a4f422c45ce6f909a4cb19f11f9534",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394411
+      },
+      {
+        "hash": "0xe4fefdef5d66186a1d38b7090200608621a68d17e3fa60d7f0f39fadf321a31b",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394566
+      },
+      {
+        "hash": "0x7c468d841b18c82c12122049c386651faa8fd074b66bb1b30abcd97a482baa50",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394574
+      },
+      {
+        "hash": "0x6ae6763ea07b0c7cae63b8619b9eb0021557b5172f57b92ea5fb7b08e6c8cdc3",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394716
+      },
+      {
+        "hash": "0xf89f77b01d01070cf01eff91fafe670fa7bae2b8076838b0dbd1707f4cd83d4d",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394758
+      },
+      {
+        "hash": "0x65ee62eaeb46b7bc61f139249b49c11770123bae2beb2754f46061a64cc2c8b4",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394766
+      },
+      {
+        "hash": "0xd46df1992d454cd122b9a8255ae94e50a72f8344f6ee7eb52798f51881826759",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394851
+      },
+      {
+        "hash": "0x8deeec897a481e7d775d874c37beead002e29bb28524743521935855a4f9783a",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404394860
+      },
+      {
+        "hash": "0xa6dea401dd4aadcdac19b3989b14c9a7180806fea16f5bbe9dca74870031efd4",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404395030
+      },
+      {
+        "hash": "0x9edebd08f15bdfb37c1971aa52c21882d04494141bc5138fcd0d6871efc856cf",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404395072
+      },
+      {
+        "hash": "0x3d50e4420d80efb7113ce4dd14a3ad0449aebae1476a364667088d71ad993c30",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404395079
+      },
+      {
+        "hash": "0x56bf0484ab7be4f6172913e1d29f55970b54f78e6ba6ef5f13de5462c122a7e1",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404395152
+      },
+      {
+        "hash": "0x65142f7f2046318589962899e4ba0afe2709e5329ba08ac1523550631813f97f",
+        "exists": true,
+        "status": "success",
+        "blockNumber": 404395158
+      }
+    ],
+    "actionChecks": {
+      "rollback": {
+        "actionId": "2",
+        "receiptStatus": "RolledBack",
+        "vaultStatus": "RolledBack",
+        "source": "https://jsonblob.com/api/jsonBlob/019eaae8-9a4c-7a34-b2fe-8aacf0871761#value",
+        "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "decision": true
+      },
+      "settle": {
+        "actionId": "3",
+        "receiptStatus": "Settled",
+        "vaultStatus": "Settled",
+        "source": "https://jsonblob.com/api/jsonBlob/019eaae9-258e-7208-84da-9e8885276de8#value",
+        "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "decision": true
+      },
+      "interpretive": {
+        "actionId": "4",
+        "receiptStatus": "Settled",
+        "vaultStatus": "Settled",
+        "source": "controlled:onward-operator-bulletin#classification",
+        "rawOutput": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f534146455f544f5f455845435554450000000000000000000000000000000000",
+        "decision": true
+      }
+    }
+  }
+}
