@@ -5,6 +5,7 @@ import { FadeUp, Section } from "@/components/Section";
 import { useTotals, useRuleRecords } from "@/hooks/useTrackRecord";
 import { useRules } from "@/hooks/useRules";
 import { Link } from "react-router-dom";
+import { productRuleTitle } from "@/lib/rules";
 
 export function TrackRecordPage() {
   const { isConnected } = useAccount();
@@ -91,7 +92,7 @@ export function TrackRecordPage() {
                       <div className="col-span-1 num text-ink-muted">#{r.id.toString()}</div>
                       <div className="col-span-5 pr-3">
                         <Link to={`/receipts?rule=${r.id.toString()}`} className="font-display text-lg leading-tight hover:text-brand-deep">
-                          {r.plainText}
+                          {productRuleTitle(r.plainText)}
                         </Link>
                       </div>
                       <div className="col-span-2 text-right num">{rec?.settled.toString() ?? "0"}</div>

@@ -4,6 +4,7 @@ import { STTLabel, domainLabel, COMPARATOR_SYMBOL } from "@/lib/format";
 import type { Rule } from "@/hooks/useRules";
 import { useState } from "react";
 import { useTrigger } from "@/hooks/useTrigger";
+import { productRuleTitle } from "@/lib/rules";
 
 export function RuleCard({ rule, onTriggered }: { rule: Rule; onTriggered?: (txHash: string) => void }) {
   const [pulse, setPulse] = useState(false);
@@ -94,20 +95,3 @@ function shortUrl(url: string) {
   }
 }
 
-/**
- * Translate raw on-chain plainText to clean product copy for display.
- * The on-chain string is unchanged and still appears in receipt detail.
- * This function only rewrites patterns that contain operator scaffolding
- * language (test URLs, "controlled", "for the demo", etc.).
- */
-function productRuleTitle(plainText: string): string {
-  // Threshold-below rule using a jsonblob test source
-  if (plainText.includes("jsonblob.com") && plainText.includes("below 2")) {
-    return "Buy a YES share when the source value drops below 2.";
-  }
-  // Interpretive classification rule
-  if (plainText.startsWith("Interpretive demo:") || plainText.includes("SAFE_TO_EXECUTE")) {
-    return "Classify the operations bulletin as safe before supplying lending liquidity.";
-  }
-  return plainText;
-}

@@ -2,6 +2,7 @@ import { useAccount, usePublicClient, useReadContract, useWalletClient } from "w
 import { useQuery } from "@tanstack/react-query";
 import { CONTRACTS } from "@/config/contracts";
 import { ruleEngineAbi } from "@/config/abis";
+import { isProductRule } from "@/lib/rules";
 import { useCallback, useState } from "react";
 
 export type Rule = {
@@ -68,7 +69,7 @@ export function useRules() {
           }) as Promise<Rule>
         )
       );
-      return list.slice().reverse();
+      return list.slice().reverse().filter(isProductRule);
     }
   });
 
