@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: #F6F2EA;
+  color: #0B0B0F;
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #1F4BFF;
+  color: #F6F2EA;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: "Schibsted Grotesk", "Hanken Grotesk", ui-sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  h1 { line-height: 0.96; font-weight: 700; }
+  h2 { line-height: 1.02; }
+}
+
+@layer components {
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(11,11,15,0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem; font-weight: 500;
+    background: rgba(11,11,15,0.06);
+    color: #1A1A22;
+  }
+  button.pill:focus-visible { outline: 2px solid #1F4BFF; outline-offset: 2px; }
+  .pill-brand {
+    background: rgba(31,75,255,0.10);
+    color: #0E2EAA;
+  }
+  .pill-mint {
+    background: rgba(31,199,158,0.12);
+    color: #0A6F55;
+  }
+  .pill-rose {
+    background: rgba(232,83,124,0.12);
+    color: #9A2A4C;
+  }
+  .pill-amber {
+    background: rgba(242,169,59,0.15);
+    color: #7A4B07;
+  }
+  .card {
+    background: #FFFFFF;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(11,11,15,0.06);
+    box-shadow: 0 1px 0 rgba(11,11,15,0.04), 0 12px 32px -16px rgba(11,11,15,0.18);
+  }
+  .ink-divider {
+    border-top: 1px solid rgba(11,11,15,0.08);
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    background: #1F4BFF;
+    color: #F6F2EA;
+    font-weight: 600;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 32px -16px rgba(31,75,255,0.6); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-primary:focus-visible { outline: 3px solid #1F4BFF; outline-offset: 3px; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: transparent;
+    color: #0B0B0F;
+    border: 1px solid rgba(11,11,15,0.12);
+    font-weight: 500;
+    transition: background 200ms ease;
+  }
+  .btn-ghost:hover { background: rgba(11,11,15,0.05); }
+  .btn-ghost:focus-visible { outline: 3px solid #1F4BFF; outline-offset: 3px; }
+  .input {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(11,11,15,0.10);
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    color: #0B0B0F;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .input:focus {
+    outline: none;
+    border-color: #1F4BFF;
+    box-shadow: 0 0 0 4px rgba(31,75,255,0.15);
+  }
+  .label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5B5B6B;
+    font-weight: 600;
+  }
+  .num {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .scroll-shadow {
+    mask-image: linear-gradient(to bottom, transparent, black 24px, black calc(100% - 24px), transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
