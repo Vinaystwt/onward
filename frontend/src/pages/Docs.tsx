@@ -131,10 +131,10 @@ export function Docs() {
   return (
     <Section className="py-10 md:py-14">
       <div className="grid lg:grid-cols-[260px_1fr] gap-6 lg:gap-10">
-        <aside className="lg:sticky lg:top-24 self-start">
+        <aside className="lg:sticky lg:top-24 self-start min-w-0">
           <span className="pill pill-brand mb-3">Docs</span>
           {/* On mobile: horizontal scrolling pill nav. On desktop: vertical sidebar. */}
-          <nav className="flex lg:flex-col gap-1 overflow-x-auto pb-1 lg:pb-0 -mx-1 px-1">
+          <nav className="flex lg:flex-col gap-1 overflow-x-auto pb-1 lg:pb-0">
             {sections.map((s) => (
               <NavLink
                 key={s.id}
@@ -433,7 +433,7 @@ function ChallengeDoc() {
       <P>
         Both sequences below were executed on Somnia testnet and are permanently recorded on
         chain. Every transaction exists and succeeded. The wallet is{" "}
-        <span className="num text-sm">{proofData.wallet}</span>. Each tx hash is a live link to
+        <span className="num text-sm break-all">{proofData.wallet}</span>. Each tx hash is a live link to
         Shannon explorer.
       </P>
 

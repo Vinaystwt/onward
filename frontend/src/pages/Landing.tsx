@@ -10,7 +10,7 @@ import { shortAddr } from "@/lib/format";
 export function Landing() {
   const reduced = useReducedMotion();
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       <div aria-hidden className="absolute inset-x-0 top-0 h-[640px] bg-gradient-to-b from-brand-tint/60 via-paper to-paper pointer-events-none" />
       <div aria-hidden className="absolute -top-32 left-1/2 -translate-x-1/2 h-[420px] w-[680px] rounded-full bg-brand/15 blur-[120px]" />
 
