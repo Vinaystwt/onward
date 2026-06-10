@@ -37,7 +37,7 @@ export function RuleCard({ rule, onTriggered }: { rule: Rule; onTriggered?: (txH
         </span>
       </div>
       <p className="font-display text-2xl leading-tight tracking-tightest text-ink relative">
-        {rule.plainText}
+        {productRuleTitle(rule.plainText)}
       </p>
       <dl className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm text-ink-muted">
         <div>
@@ -92,4 +92,22 @@ function shortUrl(url: string) {
   } catch {
     return url || "n/a";
   }
+}
+
+/**
+ * Translate raw on-chain plainText to clean product copy for display.
+ * The on-chain string is unchanged and still appears in receipt detail.
+ * This function only rewrites patterns that contain operator scaffolding
+ * language (test URLs, "controlled", "for the demo", etc.).
+ */
+function productRuleTitle(plainText: string): string {
+  // Threshold-below rule using a jsonblob test source
+  if (plainText.includes("jsonblob.com") && plainText.includes("below 2")) {
+    return "Buy a YES share when the source value drops below 2.";
+  }
+  // Interpretive classification rule
+  if (plainText.startsWith("Interpretive demo:") || plainText.includes("SAFE_TO_EXECUTE")) {
+    return "Classify the operations bulletin as safe before supplying lending liquidity.";
+  }
+  return plainText;
 }

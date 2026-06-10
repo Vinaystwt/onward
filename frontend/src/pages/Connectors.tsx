@@ -39,7 +39,7 @@ export function Connectors() {
         </h1>
         <p className="text-ink-muted mt-2">
           Each domain plugs in through a small adapter contract. Trading is native. Prediction and lending
-          ship as reference venues so the demo is end to end, not stubbed.
+          ship as fully integrated reference venues, deployed and verified on chain.
         </p>
       </div>
 

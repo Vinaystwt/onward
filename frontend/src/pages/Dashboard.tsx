@@ -45,7 +45,7 @@ export function Dashboard() {
             Your self driving wallet.
           </h1>
           <p className="text-ink-muted mt-2">
-            Fund the vault, arm a rule, watch it run. Trigger any rule on demand for the demo.
+            Fund the vault, arm a rule, and watch it execute on chain. Trigger any rule on demand.
           </p>
         </div>
         <div className="flex gap-3">

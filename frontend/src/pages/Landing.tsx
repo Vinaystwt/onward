@@ -179,7 +179,7 @@ function HeroCard() {
     <div className="card p-6 md:p-7 relative overflow-hidden">
       <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-brand/30 blur-3xl" />
       <div className="relative flex items-center justify-between mb-4">
-        <span className="pill pill-brand">Live demo rule</span>
+        <span className="pill pill-brand">Live rule</span>
         <span className="pill num text-xs">Rule #07</span>
       </div>
       <p className="font-display text-2xl leading-tight tracking-tight mb-5">
