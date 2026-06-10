@@ -1,0 +1,20 @@
+# Build output
+dist/
+dist-ssr/
+
+# Dependencies
+node_modules/
+
+# Type checking cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Editor and OS
+.DS_Store
+*.local
+.vite/
