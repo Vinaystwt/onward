@@ -7,7 +7,7 @@
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.x-363636?style=flat-square&logo=solidity)](https://soliditylang.org)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
 
-[Live site](https://onwardsom.xyz/) &nbsp;·&nbsp; [Demo video](DEMO_URL) &nbsp;·&nbsp; [GitHub](https://github.com/Vinaystwt/onward)
+[Live site](https://onwardsom.xyz/) &nbsp;·&nbsp; [Demo video](https://youtu.be/1PlTqYEXd_s) &nbsp;·&nbsp; [GitHub](https://github.com/Vinaystwt/onward)
 
 ---
 
