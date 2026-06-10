@@ -3,6 +3,9 @@ cache/
 out/
 node_modules/
 
+# OS metadata
+.DS_Store
+
 # Ignores broadcast and secret-bearing artifacts
 broadcast/
 deployments.local.json
