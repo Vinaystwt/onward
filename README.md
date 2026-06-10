@@ -3,11 +3,11 @@
 **Your rules. Onward without you.**
 
 [![Somnia Testnet](https://img.shields.io/badge/Somnia-Testnet-1F4BFF?style=flat-square)](https://shannon-explorer.somnia.network)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-1FC79E?style=flat-square)](LIVE_URL)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-1FC79E?style=flat-square)](https://onwardsom.xyz/)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.x-363636?style=flat-square&logo=solidity)](https://soliditylang.org)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
 
-[Live site](LIVE_URL) &nbsp;·&nbsp; [Demo video](DEMO_URL) &nbsp;·&nbsp; [GitHub](https://github.com/Vinaystwt/onward)
+[Live site](https://onwardsom.xyz/) &nbsp;·&nbsp; [Demo video](DEMO_URL) &nbsp;·&nbsp; [GitHub](https://github.com/Vinaystwt/onward)
 
 ---
 
@@ -73,6 +73,8 @@ not a keeper re-querying an oracle.
 <img src="./frontend/public/onward-challenge.svg" width="640" alt="Challenge sequence: any party calls challenge, contract opens a fresh consensus request, validators return a new decision, vault settles or rolls back">
 
 ### Live rollback proof
+
+Live evaluations make a real consensus request to the Somnia agent platform and settle asynchronously. The receipts and rollback proof shown below are permanent on-chain records of completed runs.
 
 <img src="./frontend/public/rollback-proof.jpeg" width="800" alt="Onward rollback proof showing receipt with Rolled back status and matching provenance badges">
 
