@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 510" role="img" font-family="'Schibsted Grotesk','Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif">
+  <title>The self correcting challenge</title>
+  <desc>A pending action can be challenged, the validators read the source again, and if the second read disagrees the action is rolled back before it settles, otherwise it settles.</desc>
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="34" font-size="17" font-weight="600" fill="#15161B">The self correcting challenge</text>
+
+  <g>
+    <rect x="250" y="60" width="180" height="50" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="340" y="80" font-size="14.5" font-weight="600" fill="#15161B" text-anchor="middle">Action pending</text>
+    <text x="340" y="98" font-size="12" fill="#6A6D77" text-anchor="middle">held in the vault</text>
+  </g>
+  <line x1="340" y1="110" x2="340" y2="136" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar2)"/>
+
+  <g>
+    <rect x="250" y="138" width="180" height="50" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="340" y="158" font-size="14.5" font-weight="600" fill="#15161B" text-anchor="middle">Challenge opens</text>
+    <text x="340" y="176" font-size="12" fill="#6A6D77" text-anchor="middle">anyone can dispute</text>
+  </g>
+  <line x1="340" y1="188" x2="340" y2="214" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar2)"/>
+
+  <g>
+    <rect x="250" y="216" width="180" height="54" rx="10" fill="#E9EDFF" stroke="#2B4BFF" stroke-width="1.2"/>
+    <text x="340" y="238" font-size="14.5" font-weight="600" fill="#1B2A7A" text-anchor="middle">Fresh read</text>
+    <text x="340" y="256" font-size="12" fill="#44539F" text-anchor="middle">validators read again</text>
+  </g>
+  <line x1="340" y1="270" x2="340" y2="300" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar2)"/>
+
+  <g>
+    <rect x="230" y="302" width="220" height="50" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="340" y="332" font-size="14.5" font-weight="600" fill="#15161B" text-anchor="middle" dominant-baseline="central">Does it still agree?</text>
+  </g>
+
+  <line x1="318" y1="352" x2="214" y2="398" stroke="#EE6A4A" stroke-width="1.4" marker-end="url(#ar2)"/>
+  <line x1="362" y1="352" x2="466" y2="398" stroke="#12B886" stroke-width="1.4" marker-end="url(#ar2)"/>
+  <text x="250" y="380" font-size="11.5" fill="#8A2E16" text-anchor="middle">no</text>
+  <text x="430" y="380" font-size="11.5" fill="#0C5A45" text-anchor="middle">yes</text>
+
+  <g>
+    <rect x="110" y="400" width="180" height="54" rx="10" fill="#FCE7E0" stroke="#EE6A4A" stroke-width="1.2"/>
+    <text x="200" y="422" font-size="14.5" font-weight="600" fill="#8A2E16" text-anchor="middle">Roll back</text>
+    <text x="200" y="440" font-size="12" fill="#B0512F" text-anchor="middle">action discarded</text>
+  </g>
+  <g>
+    <rect x="390" y="400" width="180" height="54" rx="10" fill="#DEF6ED" stroke="#12B886" stroke-width="1.2"/>
+    <text x="480" y="422" font-size="14.5" font-weight="600" fill="#0C5A45" text-anchor="middle">Settle</text>
+    <text x="480" y="440" font-size="12" fill="#2A7C63" text-anchor="middle">action confirmed</text>
+  </g>
+
+  <text x="40" y="487" font-size="12.5" fill="#6A6D77">If the second read disagrees, the action is rolled back before it ever settles.</text>
+</svg>

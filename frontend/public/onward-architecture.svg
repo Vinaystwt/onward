@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 440" role="img" font-family="'Schibsted Grotesk','Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif">
+  <title>Onward architecture</title>
+  <desc>The app arms rules in the Onward contracts. The agent executor exchanges requests and results with the Somnia platform, and the vault executes actions on real venues.</desc>
+  <defs>
+    <marker id="ar3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="34" font-size="17" font-weight="600" fill="#15161B">Architecture</text>
+
+  <g>
+    <rect x="40" y="152" width="120" height="60" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="100" y="186" font-size="14" font-weight="600" fill="#15161B" text-anchor="middle" dominant-baseline="central">App and wallet</text>
+  </g>
+
+  <rect x="210" y="72" width="210" height="300" rx="18" fill="#F4F1E8" stroke="#DCD6C6" stroke-width="1.2"/>
+  <text x="224" y="98" font-size="14" font-weight="600" fill="#15161B">Onward contracts</text>
+
+  <g>
+    <rect x="240" y="112" width="150" height="48" rx="9" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="315" y="136" font-size="14" font-weight="600" fill="#15161B" text-anchor="middle" dominant-baseline="central">Rule engine</text>
+  </g>
+  <g>
+    <rect x="240" y="176" width="150" height="48" rx="9" fill="#E9EDFF" stroke="#2B4BFF" stroke-width="1.2"/>
+    <text x="315" y="200" font-size="14" font-weight="600" fill="#1B2A7A" text-anchor="middle" dominant-baseline="central">Agent executor</text>
+  </g>
+  <g>
+    <rect x="240" y="240" width="150" height="48" rx="9" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="315" y="264" font-size="14" font-weight="600" fill="#15161B" text-anchor="middle" dominant-baseline="central">Vault</text>
+  </g>
+  <g>
+    <rect x="240" y="304" width="150" height="52" rx="9" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="315" y="324" font-size="13.5" font-weight="600" fill="#15161B" text-anchor="middle">Supporting modules</text>
+    <text x="315" y="342" font-size="11.5" fill="#6A6D77" text-anchor="middle">receipt, policy, more</text>
+  </g>
+
+  <line x1="315" y1="160" x2="315" y2="176" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar3)"/>
+  <line x1="315" y1="224" x2="315" y2="240" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar3)"/>
+
+  <line x1="162" y1="176" x2="238" y2="142" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar3)"/>
+  <text x="196" y="150" font-size="11" fill="#6A6D77" text-anchor="middle">arm</text>
+
+  <g>
+    <rect x="470" y="150" width="170" height="64" rx="10" fill="#F0F2FF" stroke="#2B4BFF" stroke-width="1.2"/>
+    <text x="555" y="178" font-size="14" font-weight="600" fill="#1B2A7A" text-anchor="middle">Somnia platform</text>
+    <text x="555" y="197" font-size="12" fill="#44539F" text-anchor="middle">consensus AI read</text>
+  </g>
+  <line x1="392" y1="194" x2="468" y2="172" stroke="#2B4BFF" stroke-width="1.4" marker-end="url(#ar3)"/>
+  <line x1="468" y1="190" x2="392" y2="212" stroke="#2B4BFF" stroke-width="1.4" marker-end="url(#ar3)"/>
+  <text x="430" y="164" font-size="11" fill="#6A6D77" text-anchor="middle">request</text>
+  <text x="430" y="226" font-size="11" fill="#6A6D77" text-anchor="middle">result</text>
+
+  <rect x="470" y="250" width="170" height="150" rx="16" fill="#F4F1E8" stroke="#DCD6C6" stroke-width="1.2"/>
+  <text x="484" y="274" font-size="14" font-weight="600" fill="#15161B">Venues</text>
+  <g>
+    <rect x="486" y="282" width="138" height="42" rx="9" fill="#DEF6ED" stroke="#12B886" stroke-width="1.2"/>
+    <text x="555" y="300" font-size="13.5" font-weight="600" fill="#0C5A45" text-anchor="middle">Somnia Exchange</text>
+    <text x="555" y="316" font-size="11.5" fill="#2A7C63" text-anchor="middle">native</text>
+  </g>
+  <g>
+    <rect x="486" y="330" width="138" height="28" rx="8" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="555" y="344" font-size="12.5" fill="#15161B" text-anchor="middle" dominant-baseline="central">Prediction venue</text>
+  </g>
+  <g>
+    <rect x="486" y="364" width="138" height="28" rx="8" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="555" y="378" font-size="12.5" fill="#15161B" text-anchor="middle" dominant-baseline="central">Lending venue</text>
+  </g>
+
+  <line x1="392" y1="262" x2="468" y2="300" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar3)"/>
+  <text x="430" y="270" font-size="11" fill="#6A6D77" text-anchor="middle">executes</text>
+
+  <text x="40" y="424" font-size="12.5" fill="#6A6D77">Rules run through the agent executor, and the vault acts on real venues.</text>
+</svg>

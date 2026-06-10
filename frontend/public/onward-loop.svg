@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 280" role="img" font-family="'Schibsted Grotesk','Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif">
+  <title>How Onward works</title>
+  <desc>A rule is armed, the agent executor requests a consensus read from Somnia validators, the vault executes the action, and a receipt is written on chain.</desc>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="34" font-size="17" font-weight="600" fill="#15161B">How Onward works</text>
+
+  <g>
+    <rect x="40" y="70" width="132" height="64" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="106" y="98" font-size="14.5" font-weight="600" fill="#15161B" text-anchor="middle">Arm a rule</text>
+    <text x="106" y="118" font-size="12" fill="#6A6D77" text-anchor="middle">plain English</text>
+  </g>
+  <g>
+    <rect x="196" y="70" width="132" height="64" rx="10" fill="#E9EDFF" stroke="#2B4BFF" stroke-width="1.2"/>
+    <text x="262" y="98" font-size="14.5" font-weight="600" fill="#1B2A7A" text-anchor="middle">Agent executor</text>
+    <text x="262" y="118" font-size="12" fill="#44539F" text-anchor="middle">requests a read</text>
+  </g>
+  <g>
+    <rect x="352" y="70" width="132" height="64" rx="10" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="1.2"/>
+    <text x="418" y="98" font-size="14.5" font-weight="600" fill="#15161B" text-anchor="middle">Vault</text>
+    <text x="418" y="118" font-size="12" fill="#6A6D77" text-anchor="middle">executes action</text>
+  </g>
+  <g>
+    <rect x="508" y="70" width="132" height="64" rx="10" fill="#DEF6ED" stroke="#12B886" stroke-width="1.2"/>
+    <text x="574" y="98" font-size="14.5" font-weight="600" fill="#0C5A45" text-anchor="middle">Receipt</text>
+    <text x="574" y="118" font-size="12" fill="#2A7C63" text-anchor="middle">proof on chain</text>
+  </g>
+
+  <line x1="174" y1="102" x2="194" y2="102" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="330" y1="102" x2="350" y2="102" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="486" y1="102" x2="506" y2="102" stroke="#9A968A" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <g>
+    <rect x="196" y="176" width="132" height="58" rx="10" fill="#F0F2FF" stroke="#2B4BFF" stroke-width="1.2"/>
+    <text x="262" y="201" font-size="13.5" font-weight="600" fill="#1B2A7A" text-anchor="middle">Somnia validators</text>
+    <text x="262" y="220" font-size="12" fill="#44539F" text-anchor="middle">consensus read</text>
+  </g>
+  <line x1="250" y1="136" x2="250" y2="174" stroke="#2B4BFF" stroke-width="1.4" marker-end="url(#ar)"/>
+  <line x1="274" y1="174" x2="274" y2="136" stroke="#2B4BFF" stroke-width="1.4" marker-end="url(#ar)"/>
+  <text x="244" y="159" font-size="11" fill="#6A6D77" text-anchor="end">read</text>
+  <text x="280" y="159" font-size="11" fill="#6A6D77" text-anchor="start">result</text>
+
+  <text x="40" y="263" font-size="12.5" fill="#6A6D77">Validators run the read and agree on the result, then the action fires.</text>
+</svg>
