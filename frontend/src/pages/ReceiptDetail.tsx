@@ -48,11 +48,13 @@ export function ReceiptDetail() {
               <span className="text-signal-rose text-sm">Could not load receipt. {(error as Error).message?.slice(0, 120)}</span>
               <button className="btn-ghost text-sm" onClick={() => refetch()}>Retry</button>
             </>
-          ) : (
+          ) : receiptLoading ? (
             <>
               <span className="h-2 w-2 rounded-full bg-brand animate-pulse shrink-0" />
               <span className="text-ink-muted flex-1">Loading receipt…</span>
             </>
+          ) : (
+            <span className="text-ink-muted">No receipt found for action #{id}.</span>
           )}
         </div>
       </Section>
@@ -144,7 +146,7 @@ export function ReceiptDetail() {
                 </button>
                 <button
                   className="btn-ghost"
-                  disabled={!windowOpen ? false : true}
+                  disabled={windowOpen || sStatus === "pending"}
                   onClick={() => settle(receipt.actionId).then(() => refetch())}
                 >
                   {sStatus === "pending" ? "Settling…" : "Settle on chain"}
@@ -192,7 +194,7 @@ function Field({
     <div className="grid grid-cols-[1fr_auto_2fr] py-3 ink-divider first:border-t-0 first:pt-0 gap-2 items-start">
       <span className="label pt-0.5">{label}</span>
       <ProvenanceBadge tier={tier} />
-      <span className={`${mono ? "num text-sm" : ""}`}>{value}</span>
+      <span className={`min-w-0 break-all ${mono ? "num text-sm" : ""}`}>{value}</span>
     </div>
   );
 }

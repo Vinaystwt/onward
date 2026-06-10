@@ -1,7 +1,21 @@
 import { useCallback, useState } from "react";
 import { usePublicClient, useWalletClient } from "wagmi";
 import { CONTRACTS } from "@/config/contracts";
-import { challengeAbi, vaultAbi } from "@/config/abis";
+import { challengeAbi, vaultAbi, ruleEngineAbi } from "@/config/abis";
+
+function humaniseError(msg: string): string {
+  const revertMap: Record<string, string> = {
+    NOT_PENDING: "This action is no longer pending.",
+    UNDERFUNDED_AGENT: "Insufficient deposit for the challenge agent.",
+    REFUND_FAILED: "Deposit refund failed.",
+    ONLY_PLATFORM: "Only the platform can call this.",
+    UNKNOWN_REQUEST: "Unknown agent request."
+  };
+  const m = msg.match(/reverted[^:]*:\s*([A-Z_]+)/) || msg.match(/reason:\s*([A-Z_]+)/i);
+  if (m && revertMap[m[1]]) return revertMap[m[1]];
+  if (msg.toLowerCase().includes("user rejected")) return "Transaction rejected.";
+  return msg.split("\n")[0].slice(0, 240).replace(/^Error:\s*/, "");
+}
 
 export function useChallenge() {
   const { data: walletClient } = useWalletClient();
@@ -17,11 +31,24 @@ export function useChallenge() {
       setError(null);
       setTxHash(null);
       try {
+        // Resolve the rule's agent kind so we compute the exact required deposit.
+        const action = (await publicClient.readContract({
+          address: CONTRACTS.Vault,
+          abi: vaultAbi,
+          functionName: "getPendingAction",
+          args: [actionId]
+        })) as { ruleId: bigint };
+        const rule = (await publicClient.readContract({
+          address: CONTRACTS.RuleEngine,
+          abi: ruleEngineAbi,
+          functionName: "getRule",
+          args: [action.ruleId]
+        })) as { eventSpec: { kind: number } };
         const deposit = (await publicClient.readContract({
           address: CONTRACTS.Challenge,
           abi: challengeAbi,
           functionName: "requiredDeposit",
-          args: [0]
+          args: [rule.eventSpec.kind]
         })) as bigint;
         const hash = await walletClient.writeContract({
           address: CONTRACTS.Challenge,
@@ -36,7 +63,7 @@ export function useChallenge() {
         return hash;
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
-        setError(msg.split("\n")[0]);
+        setError(humaniseError(msg));
         setStatus("error");
         return null;
       }
@@ -69,7 +96,12 @@ export function useSettle() {
       return hash;
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
-      setError(msg.split("\n")[0]);
+      const revertMap: Record<string, string> = {
+        NOT_PENDING: "This action is no longer pending.",
+        WINDOW_OPEN: "Challenge window is still open."
+      };
+      const m = msg.match(/reverted[^:]*:\s*([A-Z_]+)/) || msg.match(/reason:\s*([A-Z_]+)/i);
+      setError(m && revertMap[m[1]] ? revertMap[m[1]] : msg.split("\n")[0].slice(0, 240));
       setStatus("error");
       return null;
     }

@@ -12,7 +12,7 @@ export function RuleCard({ rule, onTriggered }: { rule: Rule; onTriggered?: (txH
 
   const onClick = async () => {
     setPulse(true);
-    const hash = await trigger(rule.id);
+    const hash = await trigger(rule.id, rule.eventSpec.kind);
     setPulse(false);
     if (hash && onTriggered) onTriggered(hash);
   };

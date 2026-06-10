@@ -1,34 +1,32 @@
 import { useCallback, useState } from "react";
-import { useAccount, usePublicClient, useReadContract, useWalletClient } from "wagmi";
+import { useAccount, usePublicClient, useWalletClient } from "wagmi";
 import { CONTRACTS } from "@/config/contracts";
 import { agentExecutorAbi, ruleEngineAbi } from "@/config/abis";
 
-export function useEvaluationDeposit() {
-  const q = useReadContract({
-    address: CONTRACTS.AgentExecutor,
-    abi: agentExecutorAbi,
-    functionName: "requiredDeposit",
-    args: [0],
-    query: { staleTime: 30_000, refetchInterval: 60_000 }
-  });
-  return {
-    deposit: (q.data as bigint | undefined) ?? 0n,
-    isLoading: q.isLoading,
-    error: q.error as Error | null
+function humaniseError(msg: string): string {
+  const revertMap: Record<string, string> = {
+    RULE_INACTIVE: "Rule is not active.",
+    ONLY_RULE_WALLET: "Only the rule owner can trigger this rule.",
+    UNDERFUNDED_AGENT: "Insufficient agent deposit. Please try again.",
+    EXECUTOR_MISSING: "Agent executor not configured.",
+    REFUND_FAILED: "Deposit refund failed."
   };
+  const m = msg.match(/reverted[^:]*:\s*([A-Z_]+)/) || msg.match(/reason:\s*([A-Z_]+)/i);
+  if (m && revertMap[m[1]]) return revertMap[m[1]];
+  if (msg.toLowerCase().includes("user rejected")) return "Transaction rejected.";
+  return msg.split("\n")[0].slice(0, 240).replace(/^Error:\s*/, "");
 }
 
 export function useTrigger() {
   const { data: walletClient } = useWalletClient();
   const publicClient = usePublicClient();
   const { address } = useAccount();
-  const { deposit } = useEvaluationDeposit();
   const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
   const [txHash, setTxHash] = useState<string | null>(null);
 
   const trigger = useCallback(
-    async (ruleId: bigint) => {
+    async (ruleId: bigint, kind: number) => {
       if (!walletClient || !publicClient || !address) {
         setError("Wallet not ready");
         return null;
@@ -37,16 +35,13 @@ export function useTrigger() {
       setError(null);
       setTxHash(null);
       try {
-        // Always fetch a fresh deposit number at trigger time to avoid stale value.
-        let needed = deposit;
-        if (needed === 0n) {
-          needed = (await publicClient.readContract({
-            address: CONTRACTS.AgentExecutor,
-            abi: agentExecutorAbi,
-            functionName: "requiredDeposit",
-            args: [0]
-          })) as bigint;
-        }
+        // Fetch the deposit for this rule's exact agent kind so we never undercut.
+        const needed = (await publicClient.readContract({
+          address: CONTRACTS.AgentExecutor,
+          abi: agentExecutorAbi,
+          functionName: "requiredDeposit",
+          args: [kind]
+        })) as bigint;
         const hash = await walletClient.writeContract({
           address: CONTRACTS.RuleEngine,
           abi: ruleEngineAbi,
@@ -60,12 +55,12 @@ export function useTrigger() {
         return hash;
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
-        setError(msg.split("\n")[0]);
+        setError(humaniseError(msg));
         setStatus("error");
         return null;
       }
     },
-    [walletClient, publicClient, address, deposit]
+    [walletClient, publicClient, address]
   );
 
   return { trigger, status, error, txHash };
